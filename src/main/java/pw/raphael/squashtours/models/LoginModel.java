@@ -6,11 +6,14 @@
 
 package pw.raphael.squashtours.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  *
  * @author raphi
  */
-public class LoginModel {
+public class LoginModel implements APICompatibleModel{
     public int bla;
 
     public int getBla() {
@@ -19,6 +22,11 @@ public class LoginModel {
 
     public void setBla(int bla) {
         this.bla = bla;
+    }
+    public String getJSON() throws JSONException{
+        JSONObject obj = new JSONObject();
+        obj.put("bla", bla);
+        return obj.toString();
     }
     
     
