@@ -68,7 +68,7 @@ public class Address {
 	}
 	public String getJSON() throws JSONException{
 		JSONObject obj = new JSONObject();
-		obj.put("First Name", firstName);
+		obj.put("Street1", street1);
 		return obj.toString();
 	}
 

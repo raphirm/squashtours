@@ -1,4 +1,4 @@
-<#include "../include/header.ftl"/>
+<#include "../include/header.jsp"/>
 	<div class="container">
 		<div class="row">
 			<div class="span12">
@@ -77,4 +77,4 @@
 	</div>
 
 	</div> <!-- /container -->
-<#include "../include/footer.ftl"/>
+<#include "../include/footer.jsp"/>

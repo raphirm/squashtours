@@ -1,4 +1,4 @@
-<#include "../include/header.ftl"/>
+<#include "../include/header.jsp"/>
 	<div class="container">
 
 		<div class="row">
@@ -14,4 +14,4 @@
 			<p>Built with Maven profile ${buildEnv}</p>
 		</footer>
 	</div> <!-- /container -->
-<#include "../include/footer.ftl"/>
+<#include "../include/footer.jsp"/>
