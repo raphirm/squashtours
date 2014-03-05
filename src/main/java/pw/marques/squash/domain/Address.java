@@ -2,6 +2,8 @@ package pw.marques.squash.domain;
 
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * This class is used to demonstrate form validation in controller PRGValidationDTOController
@@ -63,6 +65,11 @@ public class Address {
 	}
 	public String toString() {
 		return "name="+getFirstName()+", "+getLastName()+" address1="+getStreet1()+" address2="+getStreet2()+" city="+getCity()+" state="+getState()+" zip="+getZip();
+	}
+	public String getJSON() throws JSONException{
+		JSONObject obj = new JSONObject();
+		obj.put("First Name", firstName);
+		return obj.toString();
 	}
 
 	
