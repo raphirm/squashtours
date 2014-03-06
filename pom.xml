@@ -12,7 +12,23 @@
   <spring.version>3.1.2.RELEASE</spring.version>
   </properties>
   <dependencies>
-    <dependency>
+       <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <scope>provided</scope>
+    </dependency>
+     <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>2.1</version>
+        <scope>provided</scope>
+    </dependency>
+      <dependency>
+<groupId>jstl</groupId>
+<artifactId>jstl</artifactId>
+<version>1.2</version>
+</dependency>    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>

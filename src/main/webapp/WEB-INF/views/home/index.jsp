@@ -1,18 +1,20 @@
-<#include "../include/header.jsp"/>
+
+
+
+<jsp:include page="../include/header.jsp" /> 
+
 	<div class="container">
 
-		<#if RequestParameters['authfail']??>
+		<c:if test="">
 			<div class="row">
 				<div class="span12">
-					<div class="alert alert-error">
 						Login failed
 					</div>
 				</div>
 			</div>
-		</#if>
+		</c:if>
 		<#if RequestParameters['accessdenied']??>
 			<div class="row">
-				<div class="span12">
 					<div class="alert alert-error">
 						Access denied
 					</div>
@@ -32,7 +34,7 @@
 			<div class="row">
 				<div class="span12">
 					<div class="alert alert-success">
-						You have been logged out.
+						You have been logged out.<%= request.getServletPath().equals("/WEB-INF/views/home/protected.jsp") %>
 					</div>
 				</div>
 			</div>
@@ -50,4 +52,4 @@
 			<p>Built with Maven profile ${buildEnv}</p>
 		</footer>
 	</div> <!-- /container -->
-<#include "../include/footer.jsp"/>
+<jsp:include page="../include/footer.jsp" /> 

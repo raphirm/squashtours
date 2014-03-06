@@ -1,4 +1,4 @@
-<#include "../include/header.jsp"/>
+<jsp:include page="../include/header.jsp" /> 
 	<div class="container">
 
 		<div class="row">
@@ -6,7 +6,7 @@
 				<fieldset>
 					<legend>This page is protected, only users can access it.</legend>
 				</fieldset>
-				<p>Logged in username: ${username}
+				<p>Logged in username: ${username} 
 			</div>
 		</div>
 
@@ -14,4 +14,4 @@
 			<p>Built with Maven profile ${buildEnv}</p>
 		</footer>
 	</div> <!-- /container -->
-<#include "../include/footer.jsp"/>
+<jsp:include page="../include/footer.jsp" /> 
