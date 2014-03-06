@@ -56,8 +56,8 @@
                           <c:set var="page" value="/protected.html" />
                           <c:set var="actual" value="" /> 
                          
-                          <li <c:if test="<%= request.getServletPath().equals("/WEB-INF/views/home/protected.jsp") %>">class="active"</c:if>><a href="<c:url value="/protected.html"/>">Protected</a></li>
-                          <li <c:if test="<%= request.getServletPath().equals("/WEB-INF/views/validation/address.jsp") %>">class="active"</c:if>><a href="<c:url value="/validation/address.html"/>">Form validation</a></li>
+                          <li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/protected.jsp\") %>">class="active"</c:if>><a href="<c:url value="/protected.html"/>">Protected</a></li>
+                          <li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/validation/address.jsp\") %>">class="active"</c:if>><a href="<c:url value="/validation/address.html"/>">Form validation</a></li>
                       		
                         </ul>
                         <sec:authorize access="isAuthenticated()">

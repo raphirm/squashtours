@@ -34,7 +34,7 @@
 			<div class="row">
 				<div class="span12">
 					<div class="alert alert-success">
-						You have been logged out.<%= request.getServletPath().equals("/WEB-INF/views/home/protected.jsp") %>
+						You have been logged out
 					</div>
 				</div>
 			</div>
