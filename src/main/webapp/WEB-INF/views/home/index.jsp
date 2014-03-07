@@ -8,7 +8,7 @@
 <jsp:include page="../include/header.jsp" /> 
 
 	<div class="container">
-	<c:if test="<%= request.getParameter(\"accessdenied\") != null %>">
+	<c:if test="<%= request.getParameter(\"authfail\") != null %>">
 			<div class="row">
 				<div class="span12">
 				<div class="alert alert-error">
