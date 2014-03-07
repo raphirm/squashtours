@@ -1,27 +1,30 @@
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <jsp:include page="../include/header.jsp" /> 
 
 	<div class="container">
-
-		<c:if test="">
+	<c:if test="<%= request.getParameter(\"accessdenied\") != null %>">
 			<div class="row">
 				<div class="span12">
+				<div class="alert alert-error">
 						Login failed
 					</div>
 				</div>
 			</div>
-		</c:if>
-		<#if RequestParameters['accessdenied']??>
-			<div class="row">
+			</c:if>
+		<c:if test="<%= request.getParameter(\"accessdenied\") != null %>"> 
+		<div class="row">
+				<div class="span12">
 					<div class="alert alert-error">
 						Access denied
-					</div>
-				</div>
-			</div>
-		</#if>
-		<#if RequestParameters['login']??>
+					</div></div></div>
+		</c:if> 
+		<c:if test="<%= request.getParameter(\"login\") != null %>"> 
 			<div class="row">
 				<div class="span12">
 					<div class="alert alert-warning">
@@ -29,8 +32,8 @@
 					</div>
 				</div>
 			</div>
-		</#if>
-		<#if RequestParameters['loggedout']??>
+		</c:if> 
+		<c:if test="<%= request.getParameter(\"loggedout\") != null %>"> 
 			<div class="row">
 				<div class="span12">
 					<div class="alert alert-success">
@@ -38,7 +41,7 @@
 					</div>
 				</div>
 			</div>
-		</#if>
+		</c:if> 
 			
 		<div class="row">
 			<div class="span12">
@@ -51,5 +54,5 @@
 		<footer>
 			<p>Built with Maven profile ${buildEnv}</p>
 		</footer>
-	</div> <!-- /container -->
+	</div> <
 <jsp:include page="../include/footer.jsp" /> 
