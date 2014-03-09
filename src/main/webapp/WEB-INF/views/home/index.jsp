@@ -54,5 +54,5 @@
 		<footer>
 			<p>Built with Maven profile ${buildEnv}</p>
 		</footer>
-	</div> <
+	</div>
 <jsp:include page="../include/footer.jsp" /> 
