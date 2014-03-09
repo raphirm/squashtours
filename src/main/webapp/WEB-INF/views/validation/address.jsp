@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <jsp:include page="../include/header.jsp" /> 
 	<div class="container">
 		<div class="row">
@@ -13,12 +17,10 @@
 			</div>
 		</div>
 	
-	<#if success?? >
 		<strong>${success}</strong>
-	</#if>
 
 	<div class="row-fluid">
-		<form method="POST" action="<@spring.url value="/validation/address.html"/>" >
+		<form method="POST" action="<c:url value="/validation/address.html"/>" >
 		    <fieldset>
 				<div id="legend">
 	 				<legend class="">Address</legend>
@@ -45,7 +47,7 @@
 					</div>
 				</div>
 
-				<#assign cityError><@form.errors path="address.city" element="span" cssClass="help-inline"/></#assign>
+			<!-- 	<#assign cityError><@form.errors path="address.city" element="span" cssClass="help-inline"/></#assign> -->
 				<div class="control-group <#if cityError?has_content>error</#if>">
 					<label class="control-label" for="city"><span style="color:red">* </span>City</label>
 					<input type="text" id="city" name="city" placeholder="" value="${address.city}" class="input-xlarge">

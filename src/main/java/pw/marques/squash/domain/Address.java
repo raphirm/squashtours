@@ -27,8 +27,16 @@ public class Address {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	public String getName(){
+		return firstName + " " + lastName;
+	}
 	public String getLastName() {
 		return lastName;
+	}
+	public void setName(String name){
+		String[] split = name.split(" ");
+		firstName = split[0];
+		lastName = split[1];	
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
