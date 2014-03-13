@@ -1,6 +1,11 @@
 package pw.marques.squash.domain;
 
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,11 +15,18 @@ import org.json.JSONObject;
  * @author chad
  *
  */
+@Entity
 public class Address {
+	
+	@Id  
+	@GeneratedValue
+	private Long addressID;
 
 	private String firstName;
 	private String lastName;
+	@Column
 	private String street1;
+	@Column
 	private String street2;
 	@NotEmpty(message="{address.city}")
 	private String city;

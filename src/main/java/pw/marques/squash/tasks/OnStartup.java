@@ -9,10 +9,11 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import pw.marques.squash.domain.Court;
 import pw.marques.squash.domain.Group;
 import pw.marques.squash.domain.User;
+import pw.marques.squash.services.CourtService;
 import pw.marques.squash.services.UserService;
-
 import freemarker.log.Logger;
 
 @Component
@@ -29,6 +30,8 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private CourtService courtService;
 	
 	@Transactional
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -57,6 +60,13 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
 			
 				userService.installNewUser(admin);
 				log.info("Installed default admin account with username="+defaultAdminUsername);
+			}
+			Court def = courtService.findByCourt("defaultCourt");
+			if(def == null){
+				def = new Court();
+				def.setCourtName("default");
+				courtService.installNewCourt(def);
+				
 			}
 		}
 	}
