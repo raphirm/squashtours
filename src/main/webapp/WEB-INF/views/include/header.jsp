@@ -50,7 +50,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<c:url value="/index.html"/>">My Project</a>
+                    <a class="brand" href="<c:url value="/index.html"/>">Squash Personal League Manager</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                           <c:set var="page" value="/protected.html" />
