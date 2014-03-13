@@ -9,6 +9,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import pw.marques.squash.domain.Address;
 import pw.marques.squash.domain.Court;
 import pw.marques.squash.domain.Group;
 import pw.marques.squash.domain.User;
@@ -64,10 +65,19 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
 			Court def = courtService.findByCourt("defaultCourt");
 			if(def == null){
 				def = new Court();
-				def.setCourtName("default");
-				courtService.installNewCourt(def);
-				
 			}
+			def.setCourtName("defaultCourt");
+			Address address = def.getAddress();
+			if(address == null){
+				 address =	new Address();
+			}
+			address.setCity("Zuerich");
+			address.setStreet1("Brandstrasse 49");
+			def.setAddress(address);
+			courtService.installNewAddress(address);
+			courtService.installNewCourt(def);
+				
+			
 		}
 	}
 

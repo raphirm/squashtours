@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import pw.marques.squash.dao.DaoFactory;
+import pw.marques.squash.domain.Address;
 import pw.marques.squash.domain.Group;
 import pw.marques.squash.domain.User;
 import pw.marques.squash.domain.Court;
@@ -30,6 +31,10 @@ public class CourtService {
 	@Transactional
 	public void installNewCourt(Court court) {
 		daoFactory.getDao(Court.class).save(court);
+	}
+	@Transactional
+	public void installNewAddress(Address address) {
+		daoFactory.getDao(Address.class).save(address);
 	}
 
 }

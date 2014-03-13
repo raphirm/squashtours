@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,14 +13,15 @@ import javax.persistence.OneToMany;
 public class Court {
 	
 	@Id  
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "courtID")
 	private Long courtID;
 	
 	@Column
 	private String courtName;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "addressID", nullable = false)
+	@JoinColumn(name = "addressID")
 	private Address address;
 
 	public Long getCourtID() {

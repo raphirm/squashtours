@@ -10,7 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -38,6 +40,13 @@ public class User implements UserDetails {
 	private boolean credentialsNonExpired = true;
 	@Column
 	private boolean accountNonLocked = true;
+	@Column
+	private String firstName;
+	@Column
+	private String lastName;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "addressID")
+	private Address addressID;
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	private List<Group> groups;
@@ -111,6 +120,30 @@ public class User implements UserDetails {
 
 	public void setGroups(List<Group> groups) {
 		this.groups = groups;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Address getAddressID() {
+		return addressID;
+	}
+
+	public void setAddressID(Address addressID) {
+		this.addressID = addressID;
 	}
 
 	public Collection<GrantedAuthority> getAuthorities() {
