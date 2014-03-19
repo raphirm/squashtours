@@ -14,9 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,7 +33,7 @@ public class User implements UserDetails {
 	@GeneratedValue
 	private Long id;
 	@NotEmpty(message="Username should not be empty.")
-	@Column
+	@Column(unique = true, nullable = false)
 	private String username;
 	@NotEmpty(message="Password should not be empty.")
 	@Column
@@ -48,7 +50,7 @@ public class User implements UserDetails {
 	private boolean accountNonLocked = true;
 	@Email(message="This E-Mail is not valid.")
 	@NotEmpty(message="E-Mail should not be empty.")
-	@Column
+	@Column(unique = true, nullable = false)
 	private String eMail;
 	@Column
 	private String firstName;

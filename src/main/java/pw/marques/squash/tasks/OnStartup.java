@@ -46,6 +46,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
 				admin = new User();
 				admin.setUsername(defaultAdminUsername);
 				admin.setPassword(defaultAdminPassword);
+				admin.seteMail("dev@null.com");
 			
 				Group userGroup = new Group();
 				userGroup.setName("ROLE_USER");

@@ -64,9 +64,13 @@
                       		<li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/about.jsp\") %>">class="active"</c:if>><a href="<c:url value="/about.html"/>">About Us</a></li>	
                         </ul>
                         <sec:authorize access="isAuthenticated()">
+                        	<sec:authentication var="user" property="principal" />
+                        
 	                        <form action=<c:url value="/j_spring_security_logout"/> class="navbar-form pull-right" method="POST">
 	                            <button type="submit" class="btn">Sign out</button>
 	                        </form>
+	                        <ul class="nav pull-right"> <li><a href="<c:url value="/user/${user.id}" /> ">${user.username }</a></li></ul>
+	                       
                         </sec:authorize>
                         <sec:authorize access="isAnonymous()">
                         

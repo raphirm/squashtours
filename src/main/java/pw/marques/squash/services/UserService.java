@@ -31,6 +31,10 @@ public class UserService  {
 		User user = daoFactory.getDao(User.class).findOneByCriteria(Restrictions.eq("username",  username));
 		return user;
 	}
+	public User findByID(long id) {
+		User user = daoFactory.getDao(User.class).findOneByCriteria(Restrictions.eq("id",  id));
+		return user;
+	}
 	public List<User> getAllUsers(){
 		List<User> users = daoFactory.getDao(User.class).findAll();
 		return users;
