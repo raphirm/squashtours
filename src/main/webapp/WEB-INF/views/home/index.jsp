@@ -46,13 +46,13 @@
 		<div class="row">
 			<div class="span12">
 				<fieldset>
-					<legend>Hello, World!</legend>
+					<legend>Welcome to the brand new Squash Manager</legend>
 				</fieldset>
 			</div>
 		</div>
 
 		<footer>
-			<p>Built with Maven profile ${buildEnv}</p>
+			<p>Organize your own squash league, challenge your friends and find squash partners</p>
 		</footer>
 	</div>
 <jsp:include page="../include/footer.jsp" /> 

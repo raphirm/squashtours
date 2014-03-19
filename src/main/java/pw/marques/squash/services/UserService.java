@@ -48,6 +48,12 @@ public class UserService  {
 	public void installNewGroup(Group group) {
 		daoFactory.getDao(Group.class).save(group);
 	}
+	@Transactional
+	public Group findByGroupname(String groupname){
+		Group group = daoFactory.getDao(Group.class).findOneByCriteria(Restrictions.eq("name", groupname));
+		return group;
+		
+	}
 
 
 }

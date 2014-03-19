@@ -14,10 +14,13 @@
 		<security:intercept-url pattern="/favicon.ico"  access="IS_AUTHENTICATED_ANONYMOUSLY"  />
 		<security:intercept-url pattern="/j_spring_security*"  access="IS_AUTHENTICATED_ANONYMOUSLY"  />
 		<security:intercept-url pattern="/index.html*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+				<security:intercept-url pattern="/about.html" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		
+				<security:intercept-url pattern="/register.html*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<security:intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<security:intercept-url pattern="/favicon.ico" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<security:intercept-url pattern="/validation/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		
+		<security:intercept-url pattern="/admin/**" access="ROLE_ADMIN"  />
 		<security:intercept-url pattern="/**" access="ROLE_USER"  />
 		 <security:access-denied-handler  error-page="/accessdenied.html"/>
 		<security:form-login login-page="/index.html?login" default-target-url="/index.html" authentication-failure-url="/index.html?authfail"/>

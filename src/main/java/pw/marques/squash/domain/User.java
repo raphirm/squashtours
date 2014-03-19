@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -28,8 +30,10 @@ public class User implements UserDetails {
 	@Id  
 	@GeneratedValue
 	private Long id;
+	@NotEmpty(message="Username should not be empty.")
 	@Column
 	private String username;
+	@NotEmpty(message="Password should not be empty.")
 	@Column
 	private String password;
 	@Column
@@ -42,6 +46,10 @@ public class User implements UserDetails {
 	private boolean credentialsNonExpired = true;
 	@Column
 	private boolean accountNonLocked = true;
+	@Email(message="This E-Mail is not valid.")
+	@NotEmpty(message="E-Mail should not be empty.")
+	@Column
+	private String eMail;
 	@Column
 	private String firstName;
 	@Column
@@ -169,5 +177,14 @@ public class User implements UserDetails {
 		}
 		return auths;
 	}
+
+	public String geteMail() {
+		return eMail;
+	}
+
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
+	}
+	
 	
 }

@@ -50,15 +50,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<c:url value="/index.html"/>">Squash Personal League Manager</a>
+                    <a class="brand" href="<c:url value="/index.html"/>">Squash Manager</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                           <c:set var="page" value="/protected.html" />
                           <c:set var="actual" value="" /> 
                          
-                          <li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/protected.jsp\") %>">class="active"</c:if>><a href="<c:url value="/protected.html"/>">Protected</a></li>
-                          <li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/validation/address.jsp\") %>">class="active"</c:if>><a href="<c:url value="/validation/address.html"/>">Form validation</a></li>
+                          <sec:authorize access="isAuthenticated()"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/protected.jsp\") %>">class="active"</c:if>><a href="<c:url value="/protected.html"/>">Protected</a></li></sec:authorize>
+                          <sec:authorize access="isAuthenticated()"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/validation/address.jsp\") %>">class="active"</c:if>><a href="<c:url value="/validation/address.html"/>">Form validation</a></li></sec:authorize>
+                    	 <sec:authorize access="isAnonymous()"> <li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/register.jsp\") %>">class="active"</c:if>><a href="<c:url value="/register.html"/>">Register</a></li></sec:authorize>
+                      		<sec:authorize access="hasRole('ROLE_ADMIN')"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/admin/user.jsp\") %>">class="active"</c:if>><a href="<c:url value="/admin/user"/>">User Administration</a></li></sec:authorize>
                       		
+                      		<li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/about.jsp\") %>">class="active"</c:if>><a href="<c:url value="/about.html"/>">About Us</a></li>	
                         </ul>
                         <sec:authorize access="isAuthenticated()">
 	                        <form action=<c:url value="/j_spring_security_logout"/> class="navbar-form pull-right" method="POST">

@@ -20,7 +20,7 @@
 		<strong>${success}</strong>
 
 	<div class="row-fluid">
-		<form method="POST" action="<c:url value="/validation/address.html"/>" >
+		<form method="POST" action="<c:url value="register.html"/>" >
 		    <fieldset>
 				<div id="legend">
 	 				<legend class="">Address</legend>
