@@ -78,6 +78,14 @@ public class Dates {
 	public void setMatch(Match match) {
 		this.match = match;
 	}
+	public String getJSON() throws JSONException{
+		JSONObject result = new JSONObject();
+		result.put("dateID", dateID);
+		result.put("Date", date);
+		result.put("Status", status);
+		result.put("OriginUserID", origin.getId());
+		return result.toString();
+	}
 	
 	
 

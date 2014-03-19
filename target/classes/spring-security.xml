@@ -18,8 +18,8 @@
 		<security:intercept-url pattern="/favicon.ico" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<security:intercept-url pattern="/validation/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		
-		<security:intercept-url pattern="/**" access="ROLE_USER" />
-	
+		<security:intercept-url pattern="/**" access="ROLE_USER"  />
+		 <security:access-denied-handler  error-page="/accessdenied.html"/>
 		<security:form-login login-page="/index.html?login" default-target-url="/index.html" authentication-failure-url="/index.html?authfail"/>
 		<security:logout logout-success-url="/index.html?loggedout" />
 	</security:http>
