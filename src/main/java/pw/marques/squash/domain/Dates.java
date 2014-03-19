@@ -33,7 +33,7 @@ public class Dates {
 	@Column
 	@Enumerated(EnumType.STRING)
 	private DateStatus status;
-	@Column
+	@ManyToOne
 	private User origin;
 	
 	@ManyToOne
