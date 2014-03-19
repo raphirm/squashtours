@@ -36,7 +36,6 @@ public class Dates {
 	@Column
 	private User origin;
 	
-	@Column
 	@ManyToOne
 	private Match match;
 

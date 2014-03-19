@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -26,15 +27,15 @@ public class League {
 	@Id  
 	@GeneratedValue
 	private long leagueID;
-	@Column
+	
 	@OneToOne
 	private Ranking ranking;
-	@Column
+	
 	@ManyToMany
 	private List<User> user;
 	
-	@Column
-	@ManyToOne
+	
+	@OneToMany
 	private List<Match> match;
 	
 	@Column

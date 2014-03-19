@@ -22,10 +22,9 @@ public class Ranking {
 	@Id  
 	@GeneratedValue
 	private long rankingID;
-	@Column
 	@OneToOne
 	private League leage;
-	@Column
+	
 	@OneToOne
 	private User user;
 	@Column

@@ -29,14 +29,14 @@ public class Match {
 	@Id  
 	@GeneratedValue
 	private long matchID;
-	@Column
+	
 	@ManyToOne
 	private User player1;
-	@Column
+	
 	@ManyToOne
 	private User player2;
 	
-	@Column
+	
 	@OneToMany(fetch=FetchType.EAGER)
 	private List<Dates> date;
 	

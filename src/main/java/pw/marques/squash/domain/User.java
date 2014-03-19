@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -44,14 +46,17 @@ public class User implements UserDetails {
 	private String firstName;
 	@Column
 	private String lastName;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "addressID")
 	private Address addressID;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "leagueID")
 	private List<League> league;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Group> groups;
 	
 	public List<League> getLeague() {
