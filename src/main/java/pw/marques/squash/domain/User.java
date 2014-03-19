@@ -48,8 +48,19 @@ public class User implements UserDetails {
 	@JoinColumn(name = "addressID")
 	private Address addressID;
 	
+	@ManyToMany
+	private List<League> league;
+	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	private List<Group> groups;
+	
+	public List<League> getLeague() {
+		return league;
+	}
+
+	public void setLeague(List<League> league) {
+		this.league = league;
+	}
 
 	public Long getId() {
 		return id;

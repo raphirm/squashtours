@@ -19,10 +19,20 @@ public class Court {
 	
 	@Column
 	private String courtName;
+	@Column
+	private String telephoneNumber;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "addressID")
 	private Address address;
+
+	public String getTelephoneNumber() {
+		return telephoneNumber;
+	}
+
+	public void setTelephoneNumber(String telephoneNumber) {
+		this.telephoneNumber = telephoneNumber;
+	}
 
 	public Long getCourtID() {
 		return courtID;
