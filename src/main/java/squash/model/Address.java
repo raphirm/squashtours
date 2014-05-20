@@ -77,6 +77,11 @@ public class Address implements JSONObj{
 		obj.put("Zip", zip);
 		return obj;
 	}
+	@Override
+	public void update(JSONObj obj) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 }

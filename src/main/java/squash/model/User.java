@@ -244,6 +244,22 @@ public class User implements UserDetails, JSONObj {
 		obj.put("LastName", lastName);
 		return obj;
 	}
+
+	@Override
+	public void update(JSONObj obj) {
+		User user = (User) obj;
+		if(user.getFirstName()!=null){
+			this.firstName = user.getFirstName();
+		}
+		if(user.getLastName()!=null){
+			this.lastName = user.getLastName();
+		}
+		if(user.geteMail()!=null){
+			this.eMail = user.geteMail();
+		}
+		
+		
+	}
 	
 	
 }

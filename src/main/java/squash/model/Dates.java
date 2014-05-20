@@ -109,6 +109,12 @@ public class Dates implements JSONObj{
 		result.put("Status", status);		
 		return result;
 	}
+
+	@Override
+	public void update(JSONObj obj) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

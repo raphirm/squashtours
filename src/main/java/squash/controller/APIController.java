@@ -1,28 +1,37 @@
 package squash.controller;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import squash.model.Address;
 import squash.model.Court;
 import squash.model.Dates;
+import squash.model.Group;
 import squash.model.JSONObj;
+import squash.model.League;
+import squash.model.Ranking;
+import squash.model.Satz;
+import squash.model.Spiel;
 import squash.model.User;
 import squash.service.AddressService;
 import squash.service.CourtService;
 import squash.service.DatesService;
+import squash.service.GroupService;
+import squash.service.LeagueService;
+import squash.service.RankingService;
+import squash.service.SatzService;
+import squash.service.SpielService;
 import squash.service.UserService;
 import squash.util.JSONTools;
 @Controller
@@ -35,8 +44,20 @@ public class APIController {
 	private CourtService courtService;
 	@Resource
 	private DatesService datesService;
+	@Resource
+	private GroupService groupService;
+	@Resource
+	private LeagueService leagueService;
+	@Resource
+	private RankingService rankingService;
+	@Resource
+	private SatzService satzService;
+	@Resource
+	private SpielService spielService;
 	
-	@RequestMapping(value="/api")
+	
+	
+	@RequestMapping(method={RequestMethod.GET}, value="/api")
 	public String overview(Model model){
 		JSONObj obj = new JSONObj() {
 			
@@ -64,12 +85,17 @@ public class APIController {
 				obj.put("user");
 				return obj.toString();
 			}
+
+			@Override
+			public void update(JSONObj obj) {
+				
+			}
 		};
 		model.addAttribute("api", obj);
 		return "api/api";
 	}
 	
-	@RequestMapping(value="/api/{path:[a-z-]+}/{id}")
+	@RequestMapping(method={RequestMethod.GET}, value="/api/{path:[a-z-]+}/{id}")
 	public String variableAPI(Model model, @PathVariable("path") String path, @PathVariable("id") long id){
 		JSONObj obj = null;
 		switch (path) {
@@ -85,6 +111,21 @@ public class APIController {
 		case "dates":
 			obj = datesService.findOne(id);
 			break;
+		case "group":
+			obj = groupService.findOne(id);
+			break;	
+		case "league":
+			obj = leagueService.findOne(id);
+			break;
+		case "ranking":
+			obj = rankingService.findOne(id);
+			break;
+		case "satz":
+			obj = satzService.findOne(id);
+			break;
+		case "spiel":
+			obj = spielService.findOne(id);
+			break;
 		default:
 			break;
 		}
@@ -98,7 +139,7 @@ public class APIController {
 		return "api/api";
 		
 	}
-	@RequestMapping(value="/api/{path:[a-z-]+}")
+	@RequestMapping(method={RequestMethod.GET},value="/api/{path:[a-z-]+}")
 	public String variableAPIO(Model model, @PathVariable("path") String path) throws JSONException{
 		JSONArray arr = new JSONArray();
 		
@@ -120,6 +161,26 @@ public class APIController {
 			Iterable<Dates> dobj =  datesService.findAll();
 			arr = JSONTools.getJSONArray(dobj);
 			break;
+		case "group":
+			Iterable<Group> gobj =  groupService.findAll();
+			arr = JSONTools.getJSONArray(gobj);
+			break;
+		case "league":
+			Iterable<League> lobj =  leagueService.findAll();
+			arr = JSONTools.getJSONArray(lobj);
+			break;	
+		case "ranking":
+			Iterable<Ranking> robj =  rankingService.findAll();
+			arr = JSONTools.getJSONArray(robj);
+			break;
+		case "satz":
+			Iterable<Satz> saobj =  satzService.findAll();
+			arr = JSONTools.getJSONArray(saobj);
+			break;	
+		case "spiel":
+			Iterable<Spiel> spobj =  spielService.findAll();
+			arr = JSONTools.getJSONArray(spobj);
+			break;	
 		default:
 			break;
 		}
@@ -134,6 +195,30 @@ public class APIController {
 		
 		
 	}
-		
+	
+	@RequestMapping(method={RequestMethod.POST}, value="/api/test")
+	public @ResponseBody String test() {
+		return "test";
+	}
+	
+	
+	@RequestMapping(method={RequestMethod.POST}, value="/api/user/{id}", produces="application/json")
+	public @ResponseBody String updateUser(@ModelAttribute User user, @PathVariable("id") long id) throws Exception{
+		JSONObject returnValues = new JSONObject();
+		User dbuser = userService.findOne(id);
+		if(dbuser!=null){
+			dbuser.update(user);
+			System.out.println("User: "+ dbuser.getUsername() +" Firstname: "+ dbuser.getFirstName());
+			userService.save(dbuser);
+			
+			returnValues.put("ReturnCode", "200");
+			returnValues.put("Description", "Success");
+		}else{
+			returnValues.put("ReturnCode", "404");
+			returnValues.put("Description", "Object not found");
+
+		}
+		return returnValues.toString();
+	}
 
 }

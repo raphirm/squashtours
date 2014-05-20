@@ -84,6 +84,12 @@ public class Court implements JSONObj{
 		obj.put("tel", telephoneNumber);
 		return obj;
 	}
+
+	@Override
+	public void update(JSONObj obj) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
