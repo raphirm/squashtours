@@ -19,7 +19,7 @@ public class CourtDTO {
 
 	public void update(JSONObject obj, Court court, CourtService courtService, AddressService addressService) throws JSONException {
 		System.out.println(courtService.toString());
-		court = courtService.findOne(court.getCourtID());
+		court = courtService.findOne(court.getId());
 		if(obj.has("courtName")){
 			court.setCourtName(obj.getString("courtName"));
 		}
@@ -36,7 +36,7 @@ public class CourtDTO {
 	}
 	public void create(Court court, CourtService courtService, AddressService addressService){
 		if(court.getAddress()!=null){
-			court.setAddress(addressService.findOne(court.getAddress().getAddressID()));
+			court.setAddress(addressService.findOne(court.getAddress().getId()));
 		}
 		courtService.save(court);
 	}

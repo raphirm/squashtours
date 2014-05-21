@@ -17,7 +17,7 @@ public class AddressDTO {
 
 	public void update(JSONObject obj, Address address, AddressService addressService) throws JSONException {
 		System.out.println(addressService.toString());
-		address = addressService.findOne(address.getAddressID());
+		address = addressService.findOne(address.getId());
 		if(obj.has("city")){
 			address.setCity(obj.getString("city"));
 		}

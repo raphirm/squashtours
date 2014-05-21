@@ -10,6 +10,5 @@ import squash.model.User;
 
 public interface CourtService extends CrudRepository<Court, Long> {
 
-    Court findBycourtID(Long courtID);
     
 }

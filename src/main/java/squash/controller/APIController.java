@@ -237,7 +237,7 @@ public class APIController {
 			if(address!=null){
 				found=true;
 				addressDTO.update(obj, address, addressService);
-				return JSONTools.generateSuccessReply(address.getAddressID());
+				return JSONTools.generateSuccessReply(address.getId());
 			}
 			break;
 		case "court":
@@ -246,7 +246,7 @@ public class APIController {
 			if(court!=null){
 				found=true;
 				courtDTO.update(obj, court, courtService, addressService);
-				return JSONTools.generateSuccessReply(court.getCourtID());
+				return JSONTools.generateSuccessReply(court.getId());
 			}
 			break;	
 		default:
@@ -287,7 +287,7 @@ public class APIController {
 		else{
 			AddressDTO addressDTO = new AddressDTO();
 			addressDTO.create(address,  addressService);
-			return JSONTools.generateSuccessReply(address.getAddressID());
+			return JSONTools.generateSuccessReply(address.getId());
 		}
 		
 	}
@@ -303,7 +303,7 @@ public class APIController {
 		else{
 			CourtDTO courtDTO = new CourtDTO();
 			courtDTO.create(court, courtService, addressService);
-			return JSONTools.generateSuccessReply(court.getCourtID());
+			return JSONTools.generateSuccessReply(court.getId());
 		}
 		
 	}

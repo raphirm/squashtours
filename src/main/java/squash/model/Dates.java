@@ -27,7 +27,7 @@ import squash.util.JSONTools;
 public class Dates implements JSONObj{
 	@Id  
 	@GeneratedValue
-	private long dateID;
+	private long id;
 	@Column
 	private Date date;
 	@Column
@@ -39,12 +39,12 @@ public class Dates implements JSONObj{
 	@ManyToOne
 	private Spiel match;
 
-	public long getDateID() {
-		return dateID;
+	public long getId() {
+		return id;
 	}
 
-	public void setDateID(long dateID) {
-		this.dateID = dateID;
+	public void getId(long dateID) {
+		this.id = dateID;
 	}
 
 	public Date getDate() {
@@ -93,9 +93,9 @@ public class Dates implements JSONObj{
 			result.put("match", "");
 		}
 		if(origin!=null){
-			result.put("OriginUserID", origin.getJSONObj());
+			result.put("origin", origin.getJSONObj());
 		}else{
-			result.put("OriginUserID", "");
+			result.put("origin", "");
 		}
 		
 		return result;
@@ -104,9 +104,9 @@ public class Dates implements JSONObj{
 	@Override
 	public JSONObject getJSONObjSave() throws JSONException {
 		JSONObject result = new JSONObject();
-		result.put("dateID", dateID);
-		result.put("Date", date);
-		result.put("Status", status);		
+		result.put("id", id);
+		result.put("date", date);
+		result.put("status", status);		
 		return result;
 	}
 

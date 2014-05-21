@@ -51,7 +51,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
     	Court court = new Court();
     	court.setCourtName("Vitis");
     	court.setTelephoneNumber("0791234567");
-    	court.setAddress(addressService.findByaddressID(1l));
+    	court.setAddress(addressService.findOne(1l));
     	courtService.save(court);
     	
     	//User for authentication

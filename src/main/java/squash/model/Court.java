@@ -18,7 +18,7 @@ public class Court implements JSONObj{
 	@Id  
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "courtID")
-	private Long courtID;
+	private Long id;
 	
 	@Column
 	private String courtName;
@@ -37,13 +37,14 @@ public class Court implements JSONObj{
 		this.telephoneNumber = telephoneNumber;
 	}
 
-	public Long getCourtID() {
-		return courtID;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCourtID(Long courtID) {
-		this.courtID = courtID;
+	public void setId(Long courtID) {
+		this.id = courtID;
 	}
+	
 
 	public String getCourtName() {
 		return courtName;
@@ -79,9 +80,9 @@ public class Court implements JSONObj{
 	@Override
 	public JSONObject getJSONObjSave() throws JSONException {
 		JSONObject obj = new JSONObject();
-		obj.put("id", courtID);
-		obj.put("Name", courtName);
-		obj.put("tel", telephoneNumber);
+		obj.put("id", id);
+		obj.put("courtName", courtName);
+		obj.put("telephoneNumber", telephoneNumber);
 		return obj;
 	}
 

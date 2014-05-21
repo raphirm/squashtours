@@ -9,6 +9,4 @@ import squash.model.User;
 
 public interface AddressService extends CrudRepository<Address, Long> {
 
-    Address findByaddressID(Long addressID);
-    
 }

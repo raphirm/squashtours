@@ -90,7 +90,7 @@ public class UserDTO {
 			user.setRankings(((List<Ranking>) rankingService.findAll(rankingList)));
 		}
 		if(user.getAddressID()!=null){
-			user.setAddressID(addressService.findOne(user.getAddressID().getAddressID()));
+			user.setAddressID(addressService.findOne(user.getAddressID().getId()));
 		}
 		userService.save(user);
 	}

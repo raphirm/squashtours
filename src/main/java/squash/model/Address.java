@@ -20,7 +20,7 @@ public class Address implements JSONObj{
 	
 	@Id  
 	@GeneratedValue
-	private Long addressID;
+	private Long id;
 	@Column
 	private String street1;
 	@Column
@@ -31,11 +31,11 @@ public class Address implements JSONObj{
 	private String zip;
 	
 
-	public Long getAddressID() {
-		return addressID;
+	public Long getId() {
+		return id;
 	}
-	public void setAddressID(Long addressID) {
-		this.addressID = addressID;
+	public void setId(Long addressID) {
+		this.id = addressID;
 	}
 	public String getStreet1() {
 		return street1;
@@ -76,7 +76,7 @@ public class Address implements JSONObj{
 	@Override
 	public JSONObject getJSONObjSave() throws JSONException {
 		JSONObject obj = new JSONObject();
-		obj.put("id", addressID);
+		obj.put("id", id);
 		obj.put("street1", street1);
 		obj.put("street2", street2);
 		obj.put("city", city);
