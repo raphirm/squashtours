@@ -25,13 +25,14 @@ import squash.service.UserService;
 @ComponentScan
 @EnableAutoConfiguration
 public class Application extends SpringBootServletInitializer {
+	private static Class<Application> applicationClass = Application.class;
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
+        return application.sources(applicationClass);
     }
 	
     public static void main(String[] args) {
-    	ConfigurableApplicationContext context = SpringApplication.run(Application.class);
+    	ConfigurableApplicationContext context = SpringApplication.run(applicationClass, args);
     	
     	//Initial Address 1
     	AddressService addressService = context.getBean(AddressService.class);
