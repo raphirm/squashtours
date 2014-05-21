@@ -116,11 +116,7 @@ public class League implements JSONObj{
 		
 		return obj;
 	}
-	@Override
-	public void update(JSONObj obj) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	
 	

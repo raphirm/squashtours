@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,8 +27,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
+import squash.service.GroupService;
 import squash.util.JSONTools;
+
 
 @Entity
 public class User implements UserDetails, JSONObj {
@@ -209,24 +213,24 @@ public class User implements UserDetails, JSONObj {
 	public JSONObject getJSONObj() throws JSONException {
 		JSONObject obj = getJSONObjSave();
 		if(league!=null){
-			obj.put("League", JSONTools.getJSONArray(league));
+			obj.put("league", JSONTools.getJSONArray(league));
 		}else{
-			obj.put("League", "");
+			obj.put("league", "");
 		}
 		if(rankings!=null){
-			obj.put("Rankings", JSONTools.getJSONArray(rankings));
+			obj.put("rankings", JSONTools.getJSONArray(rankings));
 		}else{
-			obj.put("Rankings", "");
+			obj.put("rankings", "");
 		}
 		if(groups!=null){
-			obj.put("Groups", JSONTools.getJSONArray(groups));
+			obj.put("groups", JSONTools.getJSONArray(groups));
 		}else{
-			obj.put("Groups", "");
+			obj.put("groups", "");
 		}
 		if(addressID!=null){
-			obj.put("Address", addressID.getJSONObj());
+			obj.put("address", addressID.getJSONObj());
 		}else{
-			obj.put("Address", "");
+			obj.put("address", "");
 		}
 		return obj;
 	}
@@ -240,26 +244,12 @@ public class User implements UserDetails, JSONObj {
 		obj.put("credentialsNonExpired", credentialsNonExpired);
 		obj.put("username", username);
 		obj.put("eMail", eMail);
-		obj.put("FirstName", firstName);
-		obj.put("LastName", lastName);
+		obj.put("firstName", firstName);
+		obj.put("lastName", lastName);
 		return obj;
 	}
 
-	@Override
-	public void update(JSONObj obj) {
-		User user = (User) obj;
-		if(user.getFirstName()!=null){
-			this.firstName = user.getFirstName();
-		}
-		if(user.getLastName()!=null){
-			this.lastName = user.getLastName();
-		}
-		if(user.geteMail()!=null){
-			this.eMail = user.geteMail();
-		}
-		
-		
-	}
+	
 	
 	
 }

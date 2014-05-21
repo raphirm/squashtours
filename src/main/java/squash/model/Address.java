@@ -31,6 +31,12 @@ public class Address implements JSONObj{
 	private String zip;
 	
 
+	public Long getAddressID() {
+		return addressID;
+	}
+	public void setAddressID(Long addressID) {
+		this.addressID = addressID;
+	}
 	public String getStreet1() {
 		return street1;
 	}
@@ -71,17 +77,13 @@ public class Address implements JSONObj{
 	public JSONObject getJSONObjSave() throws JSONException {
 		JSONObject obj = new JSONObject();
 		obj.put("id", addressID);
-		obj.put("Street1", street1);
-		obj.put("Street2", street2);
-		obj.put("City", city);
-		obj.put("Zip", zip);
+		obj.put("street1", street1);
+		obj.put("street2", street2);
+		obj.put("city", city);
+		obj.put("zip", zip);
 		return obj;
 	}
-	@Override
-	public void update(JSONObj obj) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 }

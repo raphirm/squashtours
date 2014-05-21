@@ -1,6 +1,11 @@
 package squash.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,12 +13,17 @@ import org.json.JSONObject;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import squash.DTO.AddressDTO;
+import squash.DTO.UserDTO;
 import squash.model.Address;
 import squash.model.Court;
 import squash.model.Dates;
@@ -86,10 +96,9 @@ public class APIController {
 				return obj.toString();
 			}
 
-			@Override
-			public void update(JSONObj obj) {
-				
-			}
+
+
+			
 		};
 		model.addAttribute("api", obj);
 		return "api/api";
@@ -195,30 +204,83 @@ public class APIController {
 		
 		
 	}
-	
-	@RequestMapping(method={RequestMethod.POST}, value="/api/test")
-	public @ResponseBody String test() {
-		return "test";
-	}
-	
-	
-	@RequestMapping(method={RequestMethod.POST}, value="/api/user/{id}", produces="application/json")
-	public @ResponseBody String updateUser(@ModelAttribute User user, @PathVariable("id") long id) throws Exception{
-		JSONObject returnValues = new JSONObject();
-		User dbuser = userService.findOne(id);
-		if(dbuser!=null){
-			dbuser.update(user);
-			System.out.println("User: "+ dbuser.getUsername() +" Firstname: "+ dbuser.getFirstName());
-			userService.save(dbuser);
-			
-			returnValues.put("ReturnCode", "200");
-			returnValues.put("Description", "Success");
-		}else{
-			returnValues.put("ReturnCode", "404");
-			returnValues.put("Description", "Object not found");
 
+	
+	
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/{path:[a-z-]+}/{id}", produces="application/json", consumes="application/json")
+	public @ResponseBody String update( @RequestBody String str, @PathVariable("id") long id, @PathVariable("path") String path, BindingResult result) throws Exception{
+		JSONObject obj;
+		if(str.startsWith("\'")||str.startsWith("\"")){
+			str = str.substring(1, str.length()-1);
 		}
-		return returnValues.toString();
+		try{
+			 obj = new JSONObject(str);
+		}catch(Exception e){
+			return JSONTools.generateErrorReply();
+		}
+		
+		boolean found = false;
+		switch (path) {
+		case "user":
+			User user  = userService.findOne(id);
+			UserDTO userDTO = new UserDTO();
+			if(user!=null){
+				found=true;
+				userDTO.update(obj, user, userService, groupService, leagueService, rankingService, addressService);
+				return JSONTools.generateSuccessReply(user.getId());
+			}
+			break;
+		case "address":
+			Address address = addressService.findOne(id);
+			AddressDTO addressDTO = new AddressDTO();
+			if(address!=null){
+				found=true;
+				addressDTO.update(obj, address, addressService);
+				return JSONTools.generateSuccessReply(address.getAddressID());
+			}
+			break;
+				
+		default:
+			break;
+		}
+		if(!found){
+			return JSONTools.generateNotFoundReply();
+		}
+		return JSONTools.generateNotFoundReply();
+		
+	}
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/user", produces="application/json", consumes="application/json")
+	public @ResponseBody String createUser(  @Valid  @RequestBody User user,  BindingResult result) throws Exception{
+		JSONObject obj = new JSONObject();
+		System.out.println(user.getUsername() + " " + user.getPassword());
+		if(result.hasErrors()){
+			obj.put("ReturnCode", "501");
+			obj.put("Errors", result.getAllErrors().toString());
+			
+			return obj.toString();
+		}
+		else{
+			UserDTO userDTO = new UserDTO();
+			userDTO.create(user, userService, groupService, leagueService, rankingService, addressService);
+			return JSONTools.generateSuccessReply(user.getId());
+		}
+		
+	}
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/address", produces="application/json", consumes="application/json")
+	public @ResponseBody String createAddress(  @Valid  @RequestBody Address address,  BindingResult result) throws Exception{
+		JSONObject obj = new JSONObject();
+		if(result.hasErrors()){
+			obj.put("ReturnCode", "501");
+			obj.put("Errors", result.getAllErrors().toString());
+			
+			return obj.toString();
+		}
+		else{
+			AddressDTO addressDTO = new AddressDTO();
+			addressDTO.create(address,  addressService);
+			return JSONTools.generateSuccessReply(address.getAddressID());
+		}
+		
 	}
 
 }
