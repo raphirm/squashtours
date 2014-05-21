@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import squash.DTO.AddressDTO;
+import squash.DTO.CourtDTO;
 import squash.DTO.UserDTO;
 import squash.model.Address;
 import squash.model.Court;
@@ -239,7 +240,15 @@ public class APIController {
 				return JSONTools.generateSuccessReply(address.getAddressID());
 			}
 			break;
-				
+		case "court":
+			Court court = courtService.findOne(id);
+			CourtDTO courtDTO = new CourtDTO();
+			if(court!=null){
+				found=true;
+				courtDTO.update(obj, court, courtService, addressService);
+				return JSONTools.generateSuccessReply(court.getCourtID());
+			}
+			break;	
 		default:
 			break;
 		}
@@ -279,6 +288,22 @@ public class APIController {
 			AddressDTO addressDTO = new AddressDTO();
 			addressDTO.create(address,  addressService);
 			return JSONTools.generateSuccessReply(address.getAddressID());
+		}
+		
+	}
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/court", produces="application/json", consumes="application/json")
+	public @ResponseBody String createCourt(  @Valid  @RequestBody Court court,  BindingResult result) throws Exception{
+		JSONObject obj = new JSONObject();
+		if(result.hasErrors()){
+			obj.put("ReturnCode", "501");
+			obj.put("Errors", result.getAllErrors().toString());
+			
+			return obj.toString();
+		}
+		else{
+			CourtDTO courtDTO = new CourtDTO();
+			courtDTO.create(court, courtService, addressService);
+			return JSONTools.generateSuccessReply(court.getCourtID());
 		}
 		
 	}
