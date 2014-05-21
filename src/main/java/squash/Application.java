@@ -20,6 +20,7 @@ import squash.model.User;
 import squash.service.AddressService;
 import squash.service.CourtService;
 import squash.service.UserService;
+import squash.task.OnStartup;
 
 @Configuration
 @ComponentScan
