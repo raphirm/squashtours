@@ -21,6 +21,8 @@ import squash.DTO.DateDTO;
 import squash.DTO.GroupDTO;
 import squash.DTO.LeagueDTO;
 import squash.DTO.RankingDTO;
+import squash.DTO.SatzDTO;
+import squash.DTO.SpielDTO;
 import squash.DTO.UserDTO;
 import squash.model.Address;
 import squash.model.Court;
@@ -282,6 +284,24 @@ public class APIController {
 				return JSONTools.generateSuccessReply(ranking.getId());
 			}
 			break;	
+		case "satz":
+			Satz satz = satzService.findOne(id);
+			SatzDTO satzDTO = new SatzDTO();
+			if(satz!=null){
+				found=true;
+				satzDTO.update(obj, satz, satzService,spielService );
+				return JSONTools.generateSuccessReply(satz.getId());
+			}
+			break;
+		case "spiel":
+			Spiel spiel = spielService.findOne(id);
+			SpielDTO spielDTO = new SpielDTO();
+			if(spiel!=null){
+				found=true;
+				spielDTO.update(obj, spiel, spielService, userService, datesService, satzService );
+				return JSONTools.generateSuccessReply(spiel.getId());
+			}
+			break;
 		default:
 			break;
 		}
@@ -402,6 +422,37 @@ public class APIController {
 			rankingDTO.create(ranking, rankingService, userService, leagueService);
 			return JSONTools.generateSuccessReply(ranking.getId());
 		}
+		
+	}
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/satz", produces="application/json", consumes="application/json")
+	public @ResponseBody String createSatz(  @Valid  @RequestBody Satz set,  BindingResult result) throws Exception{
+		JSONObject obj = new JSONObject();
+		if(result.hasErrors()){
+			obj.put("ReturnCode", "501");
+			obj.put("Errors", result.getAllErrors().toString());
+			
+			return obj.toString();
+		}
+		else{
+			SatzDTO setDto = new SatzDTO();
+			setDto.create(set, satzService, spielService);
+			return JSONTools.generateSuccessReply(set.getId());
+		}
+	}
+		@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/spiel", produces="application/json", consumes="application/json")
+		public @ResponseBody String createSpiel(  @Valid  @RequestBody Spiel spiel,  BindingResult result) throws Exception{
+			JSONObject obj = new JSONObject();
+			if(result.hasErrors()){
+				obj.put("ReturnCode", "501");
+				obj.put("Errors", result.getAllErrors().toString());
+				
+				return obj.toString();
+			}
+			else{
+				SpielDTO spielDTO = new SpielDTO();
+				spielDTO.create(spiel, spielService, userService, datesService, satzService);
+				return JSONTools.generateSuccessReply(spiel.getId());
+			}
 		
 	}
 

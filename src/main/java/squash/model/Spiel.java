@@ -30,7 +30,7 @@ import squash.util.MatchStatus;
 public class Spiel implements JSONObj{
 	@Id  
 	@GeneratedValue
-	private long matchID;
+	private long id;
 	
 	@ManyToOne
 	private User player1;
@@ -62,12 +62,12 @@ public class Spiel implements JSONObj{
 		this.sets = sets;
 	}
 
-	public long getMatchID() {
-		return matchID;
+	public long getId() {
+		return id;
 	}
 
-	public void setMatchID(long matchID) {
-		this.matchID = matchID;
+	public void setId(long matchID) {
+		this.id = matchID;
 	}
 
 	public User getPlayer1() {
@@ -148,7 +148,7 @@ public class Spiel implements JSONObj{
 	@Override
 	public JSONObject getJSONObjSave() throws JSONException {
 		JSONObject obj = new JSONObject();
-		obj.put("id", matchID);
+		obj.put("id", id);
 		
 		if(player1Status!=null){
 			obj.put("player1Status", player1Status.toString());

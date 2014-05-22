@@ -69,7 +69,7 @@ public class LeagueDTO {
 		if(league.getSpiel()!=null){
 			List<Long> matchLIst = new ArrayList<Long>();
 			for (Spiel match : league.getSpiel()) {
-				matchLIst.add(match.getMatchID());
+				matchLIst.add(match.getId());
 			}
 			league.setSpiel((List<Spiel>) spielService.findAll(matchLIst));
 		}

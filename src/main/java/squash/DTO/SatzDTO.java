@@ -46,7 +46,7 @@ public class SatzDTO {
 	public void create(Satz set, SatzService satzService, SpielService spielService){
 
 		if(set.getMatch()!=null){
-			set.setMatch(spielService.findOne(set.getMatch().getMatchID()));
+			set.setMatch(spielService.findOne(set.getMatch().getId()));
 		}
 		
 		satzService.save(set);

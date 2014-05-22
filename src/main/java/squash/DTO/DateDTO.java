@@ -49,7 +49,7 @@ public class DateDTO {
 			date.setOrigin(userService.findOne(date.getOrigin().getId()));
 		}
 		if(date.getSpiel()!=null){
-			date.setSpiel(spielService.findOne(date.getSpiel().getMatchID()));
+			date.setSpiel(spielService.findOne(date.getSpiel().getId()));
 		}
 		
 	
