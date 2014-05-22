@@ -126,6 +126,12 @@ public class Spiel implements JSONObj{
 		else{
 			obj.put("date", "");
 		}
+		if(sets!=null){
+			obj.put("sets", JSONTools.getJSONArray(sets));
+		}
+		else{
+			obj.put("sets", "");
+		}
 		if(player1!=null){
 			obj.put("player1", player1.getJSONObj());
 		}else{
