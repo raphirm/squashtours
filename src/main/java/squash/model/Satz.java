@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class Satz implements JSONObj{
 	@Id
 	@GeneratedValue
-	private long setID;
+	private long id;
 	
 	@ManyToOne
 	private Spiel match;	
@@ -29,12 +29,12 @@ public class Satz implements JSONObj{
 	private int winner;
 
 	
-	public long getSetID() {
-		return setID;
+	public long getId() {
+		return id;
 	}
 
-	public void setSetID(long setID) {
-		this.setID = setID;
+	public void setId(long setID) {
+		this.id = setID;
 	}
 
 	public Spiel getMatch() {
@@ -86,7 +86,7 @@ public class Satz implements JSONObj{
 	@Override
 	public JSONObject getJSONObjSave() throws JSONException {
 		JSONObject obj = new JSONObject();
-		obj.put("id", setID);
+		obj.put("id", id);
 		obj.put("player1Points", player1Points);
 		obj.put("player2Points", player2Points);
 		obj.put("winner", winner);

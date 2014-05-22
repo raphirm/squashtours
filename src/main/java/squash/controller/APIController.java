@@ -20,6 +20,7 @@ import squash.DTO.CourtDTO;
 import squash.DTO.DateDTO;
 import squash.DTO.GroupDTO;
 import squash.DTO.LeagueDTO;
+import squash.DTO.RankingDTO;
 import squash.DTO.UserDTO;
 import squash.model.Address;
 import squash.model.Court;
@@ -272,6 +273,15 @@ public class APIController {
 				return JSONTools.generateSuccessReply(league.getId());
 			}
 			break;	
+		case "ranking":
+			Ranking ranking = rankingService.findOne(id);
+			RankingDTO rankingDTO = new RankingDTO();
+			if(ranking!=null){
+				found=true;
+				rankingDTO.update(obj, ranking, rankingService, userService, leagueService);
+				return JSONTools.generateSuccessReply(ranking.getId());
+			}
+			break;	
 		default:
 			break;
 		}
@@ -362,8 +372,8 @@ public class APIController {
 		}
 		
 	}
-	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/group", produces="application/json", consumes="application/json")
-	public @ResponseBody String createGroup(  @Valid  @RequestBody League league,  BindingResult result) throws Exception{
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/league", produces="application/json", consumes="application/json")
+	public @ResponseBody String createLeague(  @Valid  @RequestBody League league,  BindingResult result) throws Exception{
 		JSONObject obj = new JSONObject();
 		if(result.hasErrors()){
 			obj.put("ReturnCode", "501");
@@ -375,6 +385,22 @@ public class APIController {
 			LeagueDTO leagueDTO = new LeagueDTO();
 			leagueDTO.create(league, leagueService, userService, rankingService, spielService);
 			return JSONTools.generateSuccessReply(league.getId());
+		}
+		
+	}
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/ranking", produces="application/json", consumes="application/json")
+	public @ResponseBody String createRanking(  @Valid  @RequestBody Ranking ranking,  BindingResult result) throws Exception{
+		JSONObject obj = new JSONObject();
+		if(result.hasErrors()){
+			obj.put("ReturnCode", "501");
+			obj.put("Errors", result.getAllErrors().toString());
+			
+			return obj.toString();
+		}
+		else{
+			RankingDTO rankingDTO = new RankingDTO();
+			rankingDTO.create(ranking, rankingService, userService, leagueService);
+			return JSONTools.generateSuccessReply(ranking.getId());
 		}
 		
 	}
