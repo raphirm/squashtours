@@ -21,14 +21,14 @@ import squash.util.JSONTools;
 
 /**
  * This class is used to demonstrate form validation in controller PRGValidationDTOController
- * @author chad
+ * @author raphael
  *
  */
 @Entity
 public class League implements JSONObj{
 	@Id  
 	@GeneratedValue
-	private long leagueID;
+	private long id;
 	
 	@OneToMany
 	private List<Ranking> ranking;
@@ -44,11 +44,11 @@ public class League implements JSONObj{
 	private String title;
 	@Column
 	private String description;
-	public long getLeagueID() {
-		return leagueID;
+	public long getId() {
+		return id;
 	}
-	public void setLeagueID(long leagueID) {
-		this.leagueID = leagueID;
+	public void setId(long leagueID) {
+		this.id = leagueID;
 	}
 	public List<Ranking> getRanking() {
 		return ranking;
@@ -88,10 +88,10 @@ public class League implements JSONObj{
 	public JSONObject getJSONObj() throws JSONException {
 		JSONObject obj = getJSONObjSave();
 		if(ranking!=null){
-			obj.put("Ranking", JSONTools.getJSONArray(ranking));
+			obj.put("ranking", JSONTools.getJSONArray(ranking));
 			
 		}else{
-			obj.put("Ranking","");
+			obj.put("ranking","");
 		}
 		if(user!=null){
 			obj.put("user", JSONTools.getJSONArray(user));
@@ -110,7 +110,7 @@ public class League implements JSONObj{
 	@Override
 	public JSONObject getJSONObjSave() throws JSONException {
 		JSONObject obj = new JSONObject();
-		obj.put("id", leagueID);
+		obj.put("id", id);
 		obj.put("title", title);
 		obj.put("description", description);
 		

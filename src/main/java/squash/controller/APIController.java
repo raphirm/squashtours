@@ -1,21 +1,14 @@
 package squash.controller;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import squash.DTO.AddressDTO;
 import squash.DTO.CourtDTO;
+import squash.DTO.DateDTO;
+import squash.DTO.GroupDTO;
+import squash.DTO.LeagueDTO;
 import squash.DTO.UserDTO;
 import squash.model.Address;
 import squash.model.Court;
@@ -249,6 +245,33 @@ public class APIController {
 				return JSONTools.generateSuccessReply(court.getId());
 			}
 			break;	
+		case "dates":
+			Dates date = datesService.findOne(id);
+			DateDTO datetDTO = new DateDTO();
+			if(date!=null){
+				found=true;
+				datetDTO.update(obj, date, datesService, userService, spielService);
+				return JSONTools.generateSuccessReply(date.getId());
+			}
+			break;	
+		case "group":
+			Group group = groupService.findOne(id);
+			GroupDTO groupDTO = new GroupDTO();
+			if(group!=null){
+				found=true;
+				groupDTO.update(obj, group, groupService, userService);
+				return JSONTools.generateSuccessReply(group.getId());
+			}
+			break;	
+		case "league":
+			League league = leagueService.findOne(id);
+			LeagueDTO leagueDTO = new LeagueDTO();
+			if(league!=null){
+				found=true;
+				leagueDTO.update(obj, league, leagueService, userService, rankingService, spielService);
+				return JSONTools.generateSuccessReply(league.getId());
+			}
+			break;	
 		default:
 			break;
 		}
@@ -304,6 +327,54 @@ public class APIController {
 			CourtDTO courtDTO = new CourtDTO();
 			courtDTO.create(court, courtService, addressService);
 			return JSONTools.generateSuccessReply(court.getId());
+		}
+		
+	}
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/dates", produces="application/json", consumes="application/json")
+	public @ResponseBody String createCourt(  @Valid  @RequestBody Dates date,  BindingResult result) throws Exception{
+		JSONObject obj = new JSONObject();
+		if(result.hasErrors()){
+			obj.put("ReturnCode", "501");
+			obj.put("Errors", result.getAllErrors().toString());
+			
+			return obj.toString();
+		}
+		else{
+			DateDTO dateDTO = new DateDTO();
+			dateDTO.create(date, datesService, userService, spielService);
+			return JSONTools.generateSuccessReply(date.getId());
+		}
+		
+	}
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/group", produces="application/json", consumes="application/json")
+	public @ResponseBody String createGroup(  @Valid  @RequestBody Group group,  BindingResult result) throws Exception{
+		JSONObject obj = new JSONObject();
+		if(result.hasErrors()){
+			obj.put("ReturnCode", "501");
+			obj.put("Errors", result.getAllErrors().toString());
+			
+			return obj.toString();
+		}
+		else{
+			GroupDTO groupDTO = new GroupDTO();
+			groupDTO.create(group, userService, groupService);
+			return JSONTools.generateSuccessReply(group.getId());
+		}
+		
+	}
+	@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/group", produces="application/json", consumes="application/json")
+	public @ResponseBody String createGroup(  @Valid  @RequestBody League league,  BindingResult result) throws Exception{
+		JSONObject obj = new JSONObject();
+		if(result.hasErrors()){
+			obj.put("ReturnCode", "501");
+			obj.put("Errors", result.getAllErrors().toString());
+			
+			return obj.toString();
+		}
+		else{
+			LeagueDTO leagueDTO = new LeagueDTO();
+			leagueDTO.create(league, leagueService, userService, rankingService, spielService);
+			return JSONTools.generateSuccessReply(league.getId());
 		}
 		
 	}

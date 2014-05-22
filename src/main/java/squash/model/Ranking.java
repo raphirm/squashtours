@@ -19,14 +19,14 @@ import squash.util.JSONTools;
 
 /**
  * This class is used to demonstrate form validation in controller PRGValidationDTOController
- * @author chad
+ * @author raphael Marques
  *
  */
 @Entity
 public class Ranking implements JSONObj{
 	@Id  
 	@GeneratedValue
-	private long rankingID;
+	private long id;
 	@ManyToOne
 	private League leage;
 	
@@ -42,11 +42,11 @@ public class Ranking implements JSONObj{
 	private int points;
 	@Column
 	private int rank;
-	public long getRankingID() {
-		return rankingID;
+	public long getId() {
+		return id;
 	}
-	public void setRankingID(long rankingID) {
-		this.rankingID = rankingID;
+	public void setId(long rankingID) {
+		this.id = rankingID;
 	}
 	public League getLeage() {
 		return leage;

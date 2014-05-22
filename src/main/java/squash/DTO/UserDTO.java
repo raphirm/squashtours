@@ -78,14 +78,14 @@ public class UserDTO {
 		if(user.getLeague()!=null){
 			List<Long> leagueList = new ArrayList<Long>();
 			for (League league : user.getLeague()) {
-				leagueList.add(league.getLeagueID());
+				leagueList.add(league.getId());
 			}
 			user.setLeague(((List<League>) leagueService.findAll(leagueList)));
 		}
 		if(user.getRankings()!=null){
 			List<Long> rankingList = new ArrayList<Long>();
 			for (Ranking ranking : user.getRankings()) {
-				rankingList.add(ranking.getRankingID());
+				rankingList.add(ranking.getId());
 			}
 			user.setRankings(((List<Ranking>) rankingService.findAll(rankingList)));
 		}
