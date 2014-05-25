@@ -455,5 +455,23 @@ public class APIController {
 			}
 		
 	}
+		@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/register", produces="application/json", consumes="application/json")
+		public @ResponseBody String register(  @Valid  @RequestBody User user,  BindingResult result) throws Exception{
+			JSONObject obj = new JSONObject();
+			System.out.println(user.getUsername() + " " + user.getPassword());
+			if(result.hasErrors()){
+				obj.put("ReturnCode", "501");
+				obj.put("Errors", result.getAllErrors().toString());
+				
+				return obj.toString();
+			}
+			else{
+				UserDTO userDTO = new UserDTO();
+				user.setGroups(null);
+				userDTO.create(user, userService, groupService, leagueService, rankingService, addressService);
+				return JSONTools.generateSuccessReply(user.getId());
+			}
+			
+		}
 
 }

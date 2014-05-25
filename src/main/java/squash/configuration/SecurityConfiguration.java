@@ -31,6 +31,7 @@ public class SecurityConfiguration {
     		http
     			.antMatcher("/api/**")
     			.authorizeRequests()
+    				.antMatchers("/api/register").permitAll()
     				.anyRequest().authenticated()
     				.and()
     				.httpBasic()
