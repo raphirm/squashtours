@@ -85,7 +85,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
     	Group group1 = new Group();
     	group1.setName("user");
     	groups1.add(group1);
-    	user1.seteMail("raphael@marques.com");
+    	user1.seteMail("raph2ael@marques.com");
     	user1.setUsername("user");
     	user1.setPassword("user");
     	user1.setGroups(groups1);
