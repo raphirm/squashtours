@@ -23,6 +23,8 @@ import squash.model.Spiel;
 import squash.model.User;
 import squash.service.AddressService;
 import squash.service.CourtService;
+import squash.service.DatesService;
+import squash.service.SatzService;
 import squash.service.SpielService;
 import squash.service.UserService;
 import squash.util.DateStatus;
@@ -40,6 +42,10 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
 	private UserService userservice;
 	@Resource
 	private SpielService spielService;
+	@Resource
+	private DatesService datesService;
+	@Resource
+	private SatzService satzService;
 	
 	private final Logger log = Logger.getLogger(this.getClass().getName());
 
@@ -100,16 +106,16 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
         Dates date = new Dates();
         date.setDate(new Date());
         date.setOrigin(user);
-        date.setSpiel(match);
         date.setStatus(DateStatus.NEW);
         dates.add(date);
+        datesService.save(date);
         match.setDate(dates);
         List<Satz> sets = new ArrayList<Satz>();
         Satz set = new Satz();
-        set.setMatch(match);
         set.setPlayer1Points(10);
         set.setPlayer2Points(0);
         sets.add(set);
+        satzService.save(set);
         match.setSets(sets);
         match.setPlayer1Status(MatchStatus.win);
         match.setPlayer2Status(MatchStatus.loss);
