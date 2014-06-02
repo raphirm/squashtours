@@ -3,6 +3,11 @@
 \BOOKMARK [1][-]{section.1.2}{Abgrenzung und Inhalt}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{Vorgehen}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.4}{Zielsetzung der Arbeit}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{Konzept}{}% 6
-\BOOKMARK [0][-]{chapter.3}{Techniken}{}% 7
-\BOOKMARK [0][-]{chapter.4}{Beispiel Implementation}{}% 8
+\BOOKMARK [0][-]{chapter.2}{Definition und Konzepte}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Architektur}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Spring Security Konzepte}{chapter.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.1}{Core Klassen}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.2}{Authentication}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.3}{Autorisation}{section.2.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Implementation}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Environment}{chapter.3}% 13

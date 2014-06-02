@@ -1,1 +1,22 @@
-\chapter{Techniken}
+\chapter{Implementation}
+
+\section{Environment}
+Das Setup benutzt folgende Komponenten:
+\begin{itemize}
+\item Spring Framework 4 (last release): Web Framework welches einzelne Webseiten und eine API bereitstellt
+\item Spring Security 3 (last release): Sicherung des Web Frameworks
+\item Spring Boot 1 (last release): Minimal-Configuration Spring und Spring Security Setup. Bietet einen einfacheren einstieg in Spring und die relevanten Komponenten können im nachhinein per Java konfiguriert werden.
+\item MySQL 5.3: Datenbank um Nutzer und Rollen abzuspeichern
+
+\end{itemize}
+
+Das Ziel dieser Implementation ist, Spring Security zu implementieren und einige Features zu benutzen. Folgende Features wurden in der Implementation benutzt:
+\begin{itemize}
+\item Multi-Method authentication: Die Webseite benutzt ein Login-Formular, während die API Requests über Basic-Authentication authentisiert
+\item Eigene implementationen von UserDetail und UserDetailService: UserDetail wurde implementiert und interagiert direkt mit der MySQL datenbank.
+\item Eigene Login-, Logout- und Access Denied Seiten für die Webseite.
+\item Bcrypt Passwort Encryption: State-of-the-art Passwort Encryption für eine sichere Sicherung der Passwörter in der Datenbank.
+\item CSFR Protection für Webseite, jedoch nicht für API. 
+
+\end{itemize}
+

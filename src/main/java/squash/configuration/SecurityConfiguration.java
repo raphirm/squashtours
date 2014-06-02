@@ -32,6 +32,7 @@ public class SecurityConfiguration {
     			.antMatcher("/api/**")
     			.authorizeRequests()
     				.antMatchers("/api/register").permitAll()
+    				.antMatchers("/user/**").hasRole("admin")
     				.anyRequest().authenticated()
     				.and()
     				.httpBasic()

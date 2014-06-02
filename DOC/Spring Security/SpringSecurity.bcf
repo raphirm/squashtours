@@ -1965,6 +1965,8 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="0">*</bcf:citekey>
+    <bcf:citekey order="1">springdoc</bcf:citekey>
+    <bcf:citekey order="2">springdoc</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nty">
   <bcf:sorting>
