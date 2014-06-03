@@ -33,7 +33,7 @@ public class League implements JSONObj{
 	@OneToMany
 	private List<Ranking> ranking;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="league")
 	private List<User> user;
 	
 	

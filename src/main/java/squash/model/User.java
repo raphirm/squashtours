@@ -118,8 +118,9 @@ public class User implements UserDetails, JSONObj {
 	}
 
 	public void setPassword(String password) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		this.password = encoder.encode(password);
+//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//		this.password = encoder.encode(password);
+		this.password = new BCryptPasswordEncoder().encode(password);
 	}
 
 

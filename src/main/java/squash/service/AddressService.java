@@ -8,5 +8,6 @@ import squash.model.Address;
 import squash.model.User;
 
 public interface AddressService extends CrudRepository<Address, Long> {
+	
 
 }

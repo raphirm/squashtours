@@ -55,10 +55,10 @@ public class HomeController {
 				
 			}
 			else{
-				return "forward:/accessdenied.html";
+				return "redirect:/index	.html?accessdenied";
 			}
 		}else{
-			return "forward:/accessdenied.html";
+			return "redirect:/index.html?accessdenied";
 		}
 		
 		

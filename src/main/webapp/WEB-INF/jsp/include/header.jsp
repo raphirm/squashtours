@@ -56,10 +56,10 @@
                           <c:set var="page" value="/protected.html" />
                           <c:set var="actual" value="" /> 
                          
-                          <sec:authorize access="isAuthenticated()"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/protected.jsp\") %>">class="active"</c:if>><a href="<c:url value="/protected.html"/>">Protected</a></li></sec:authorize>
-                          <sec:authorize access="isAuthenticated()"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/validation/address.jsp\") %>">class="active"</c:if>><a href="<c:url value="/validation/address.html"/>">Form validation</a></li></sec:authorize>
+                          <sec:authorize access="isAuthenticated()"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/protected.jsp\") %>">class="active"</c:if>><a href="<c:url value="/private/1"/>">Private User 1</a></li></sec:authorize>
+                          <sec:authorize access="isAuthenticated()"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/validation/address.jsp\") %>">class="active"</c:if>><a href="<c:url value="/private/2"/>">Private User 2</a></li></sec:authorize>
                     	 <sec:authorize access="isAnonymous()"> <li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/register.jsp\") %>">class="active"</c:if>><a href="<c:url value="/register.html"/>">Register</a></li></sec:authorize>
-                      		<sec:authorize access="hasRole('ROLE_ADMIN')"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/admin/user.jsp\") %>">class="active"</c:if>><a href="<c:url value="/admin/user"/>">User Administration</a></li></sec:authorize>
+                      		<sec:authorize access="hasRole('admin')"><li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/admin/user.jsp\") %>">class="active"</c:if>><a href="<c:url value="/admin/user"/>">User Administration</a></li></sec:authorize>
                       		
                       		<li <c:if test="<%= request.getServletPath().equals(\"/WEB-INF/views/home/about.jsp\") %>">class="active"</c:if>><a href="<c:url value="/about.html"/>">About Us</a></li>	
                         </ul>
