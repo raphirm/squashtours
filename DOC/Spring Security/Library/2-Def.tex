@@ -1,8 +1,9 @@
+% !TeX spellcheck = de_CH
 \chapter{Definition und Konzepte}
 Spring Security ist ein Sicherheit-Framework, welches sich in den Workflow des Spring J2EE Framework einfügt, kann jedoch auch für andere Applikationen und Frameworks benutzt werden. Dieses Dokument beschränkt sich jedoch auf den Einsatz mit dem Spring Framework. Nahezu jede Komponente innerhalb des Frameworks kann man für den eigenen Gebrauch anpassen bzw. optimieren. Dadurch kann Spring Security mit sehr vielen anderen Authentisierungs-Komponenten zusammenarbeiten (z.B. SSO Authentications, eine grosse Vielfalt von Datenbanken usw...).
 
 \section{Architektur}
-Wenn ein HTTP-Request den Webserver trifft, kommt er zuerst in die sogenannte Filter-Chain. Diese Filter-Chain basiert auf den standard HTTP Servlet filter und ist der Eingangspunkt in die Applikation. Durch die Filter-Chain wird der Request an einen sogenannten \glqq Security Interceptor" weitergeleitet.  Der Security Interceptor authentisiert und authorisiert Requests auf Basis der Konfiguration und stellt Spring Informationen über die Authentisierung bereit.
+Wenn ein HTTP-Request den Webserver trifft, kommt er zuerst in die sogenannte Filter-Chain. Diese Filter-Chain basiert auf den standard HTTP Servlet filter und ist der Eingangspunkt in die Applikation. Durch die Filter-Chain wird der Request an einen sogenannten \glqq Security Interceptor" weitergeleitet.  Der Security Interceptor authentisiert und autorisiert Requests auf Basis der Konfiguration und stellt Spring Informationen über die Authentisierung bereit.
 
 \begin{figure}[h]{}
 	\vspace{-0.8cm}
@@ -12,8 +13,23 @@ Wenn ein HTTP-Request den Webserver trifft, kommt er zuerst in die sogenannte Fi
 	\vspace{-0.7cm}
 \end{figure}
 
+\section{Filter Chain}
+Die Filterchain basiert vollständig auf dem Java Servlet Standard. Sie entscheidet ob Spring Security anwendbar ist für eine speizifsche URL oder nicht.
 
-\section{Spring Security Konzepte}
+Es können mehrere Filter mit der Klasse FilterChainProxy benutzt werden, welche in einer bestimmten Reihenfolge abgearbeitet werden. Es ist empfohlen diese Klasse mit Spring Security zu verwenden. Dieser FilterchainProxy kann im Web.xml konfiguriert werden. 
+
+Es können alle Java Servlet Filter oder Spring Security spezifische Filter verwendet werden. Hier ein Paar Beispiele, welche interessant für Spring Security sind:
+\begin{itemize}
+\item ChannelProcessingFilter: Evaluiert welches Protokoll verwendet wird. Kann dazu benutzt werden, um HTTP Requests an HTTPS Requests weiterzuleiten
+\item SecurityContextPersistenceFilter: Authentisiert schon vorhandene Sessionen, welche per JSESSION oder Cookie auf dem CLient gespeichert wurden
+\item UsernamePasswortAuthenticationFilter, CasAuthenticationFilter, BasicAuthenticationFilter: Fängt direkte Authentication Requests ab, wie z.B. die BasicHTTPAuthentication.
+\item RememberMeAuthenticationFilter: wird verwendet um einen User zu Erinnern, d.h. es wird eine Authentication generiert, ohne wirkliche Authentisierung. Dies kann nützlich sein um Userbezogenen Inhalt auf öffentlichen Seiten zu benutzen.
+\item ExceptionTranslationFilter Wird benutzt falls der AuthenticatoinEntryPoint einen Fehler zurückgibt (z.B. 403 Access Denied)
+\item FilterSecurityInterceptor Um URLS zu schützen und Exceptions zu werfen, falls der Access Denied ist.
+\end{itemize}
+
+
+\section{Spring Security Konzepte - der Security Interceptor}
 Spring benutzt verschiedene Komponenten um Benutzer zu authentisieren und zu autorisieren. Viele dieser Komponenten können benutzerdefiniert neu implementiert werden.
  \subsection{Core Klassen}
  Die Core Klassen dienen als Schnittstelle mit der Applikation und den Authentication und Autorisation Komponenten innerhalb von Springsecurity. Hier werden die eigentlichen sicherheitsrelevanten Informationen über die Anfrage abgespeichert (Authentication) und Abgerufen (Autorisation und Spring)

@@ -10,5 +10,6 @@ public interface UserService extends CrudRepository<User, Long> {
 
     List<User> findByLastName(String username);
     User findByUsername(String username);
-    
+	User findByEMail(String email);
 }
+    

@@ -15,10 +15,10 @@ public class UserDetailServiceImpl implements UserDetailsService{
 	@Resource
     private UserService userservice;	
 	@Override
-	public UserDetails loadUserByUsername(String username)
+	public UserDetails loadUserByUsername(String email)
 			throws UsernameNotFoundException {
 		
-			squash.model.User result = userservice.findByUsername(username);
+			squash.model.User result = userservice.findByEMail(email);
 
 			return result;
 	}

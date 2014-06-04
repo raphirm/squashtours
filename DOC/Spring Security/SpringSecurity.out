@@ -5,9 +5,11 @@
 \BOOKMARK [1][-]{section.1.4}{Zielsetzung der Arbeit}{chapter.1}% 5
 \BOOKMARK [0][-]{chapter.2}{Definition und Konzepte}{}% 6
 \BOOKMARK [1][-]{section.2.1}{Architektur}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.2}{Spring Security Konzepte}{chapter.2}% 8
-\BOOKMARK [2][-]{subsection.2.2.1}{Core Klassen}{section.2.2}% 9
-\BOOKMARK [2][-]{subsection.2.2.2}{Authentication}{section.2.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.3}{Autorisation}{section.2.2}% 11
-\BOOKMARK [0][-]{chapter.3}{Implementation}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Environment}{chapter.3}% 13
+\BOOKMARK [1][-]{section.2.2}{Filter Chain}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Spring Security Konzepte - der Security Interceptor}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.3.1}{Core Klassen}{section.2.3}% 10
+\BOOKMARK [2][-]{subsection.2.3.2}{Authentication}{section.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.3.3}{Autorisation}{section.2.3}% 12
+\BOOKMARK [0][-]{chapter.3}{Implementation}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Environment}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Details zur Implementation}{chapter.3}% 15

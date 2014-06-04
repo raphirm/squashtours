@@ -1,0 +1,79 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{slideshare1}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=bbf4a41fc590cb4087c92f30ded6145d}{Ferguson}{F\bibinitperiod}{Jason}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=bbf4a41fc590cb4087c92f30ded6145d}{Ferguson}{F\bibinitperiod}{Jason}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{bbf4a41fc590cb4087c92f30ded6145d}
+      \strng{fullhash}{bbf4a41fc590cb4087c92f30ded6145d}
+      \field{sortinit}{F}
+      \field{labeltitle}{Spring Security 3}
+      \field{month}{03}
+      \field{title}{Spring Security 3}
+      \field{year}{2011}
+      \verb{url}
+      \verb http://www.slideshare.net/jasonferguson1/spring-security-3
+      \endverb
+    \endentry
+    \entry{springdoc}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=685bcc186073523b5c764d8783b1621f}{Inc.}{I\bibinitperiod}{Spring}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=685bcc186073523b5c764d8783b1621f}{Inc.}{I\bibinitperiod}{Spring}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{685bcc186073523b5c764d8783b1621f}
+      \strng{fullhash}{685bcc186073523b5c764d8783b1621f}
+      \field{sortinit}{I}
+      \field{labeltitle}{Spring Security Reference v3.2.4 RELEASE}
+      \field{month}{05}
+      \field{title}{Spring Security Reference v3.2.4 RELEASE}
+      \field{year}{2014}
+      \verb{url}
+      \verb http://docs.spring.io/spring-security/site/docs/3.2.4.RELEASE/reference/htmlsingle
+      \endverb
+    \endentry
+    \entry{slideshare2}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=1a6b379f59d96645caf24efb47926812}{Noskov}{N\bibinitperiod}{Dimitry}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=1a6b379f59d96645caf24efb47926812}{Noskov}{N\bibinitperiod}{Dimitry}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{1a6b379f59d96645caf24efb47926812}
+      \strng{fullhash}{1a6b379f59d96645caf24efb47926812}
+      \field{sortinit}{N}
+      \field{labeltitle}{Spring Security Framework}
+      \field{month}{03}
+      \field{title}{Spring Security Framework}
+      \field{year}{2012}
+      \verb{url}
+      \verb http://www.slideshare.net/analizator/spring-security-framework
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

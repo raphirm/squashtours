@@ -79,7 +79,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
     	Group group = new Group();
     	group.setName("admin");
     	groups.add(group);
-    	user.seteMail("raphael@marques.com");
+    	user.seteMail("admin@admin.com");
     	user.setUsername("admin");
     	user.setPassword("admin");
     	user.setGroups(groups);
@@ -91,7 +91,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
     	Group group1 = new Group();
     	group1.setName("user");
     	groups1.add(group1);
-    	user1.seteMail("raph2ael@marques.com");
+    	user1.seteMail("user@user.com");
     	user1.setUsername("user");
     	user1.setPassword("user");
     	user1.setGroups(groups1);
