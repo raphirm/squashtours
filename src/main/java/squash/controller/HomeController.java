@@ -55,7 +55,7 @@ public class HomeController {
 				
 			}
 			else{
-				return "redirect:/index	.html?accessdenied";
+				return "redirect:/index.html?accessdenied";
 			}
 		}else{
 			return "redirect:/index.html?accessdenied";
