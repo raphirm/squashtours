@@ -473,9 +473,6 @@ public class APIController {
 			}
 			
 		}
-		@RequestMapping("/api")
-		public @ResponseBody String api(Model model) throws JSONException{
-			return JSONTools.generateSuccessReply();
-		}
+		
 
 }
