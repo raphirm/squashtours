@@ -51,7 +51,7 @@ public class DateDTO {
 		if(date.getSpiel()!=null){
 			date.setSpiel(spielService.findOne(date.getSpiel().getId()));
 		}
-		
+		dateService.save(date);
 	
 	}
 	

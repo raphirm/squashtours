@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -371,6 +372,7 @@ public class APIController {
 		}
 		else{
 			DateDTO dateDTO = new DateDTO();
+			date.setOrigin(userService.findByUsername(((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername()));
 			dateDTO.create(date, datesService, userService, spielService);
 			return JSONTools.generateSuccessReply(date.getId());
 		}
