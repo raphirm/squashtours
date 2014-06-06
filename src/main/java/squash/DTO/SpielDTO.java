@@ -52,11 +52,17 @@ public class SpielDTO {
 	}
 	
 	public void create(Spiel match, SpielService spielService, UserService userService, DatesService datesService, SatzService satzService){
-		if(match.getPlayer1()!=null){
+		if(match.getPlayer1().getId()!=null){
 			match.setPlayer1(userService.findOne(match.getPlayer1().getId()));
 		}
-		if(match.getPlayer2()!=null){
+		if(match.getPlayer1().geteMail()!=null){
+			match.setPlayer1(userService.findByEMail(match.getPlayer1().geteMail()));
+		}
+		if(match.getPlayer2().getId()!=null){
 			match.setPlayer2(userService.findOne(match.getPlayer2().getId()));
+		}
+		if(match.getPlayer2().getUsername()!=null){
+			match.setPlayer2(userService.findByUsername(match.getPlayer2().getUsername()));
 		}
 		if(match.getDate()!=null){
 			List<Long> dateList = new ArrayList<Long>();
