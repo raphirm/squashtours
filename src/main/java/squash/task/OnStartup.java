@@ -120,6 +120,8 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
         match.setPlayer1Status(MatchStatus.win);
         match.setPlayer2Status(MatchStatus.loss);
         spielService.save(match);
+        date.setSpiel(match);
+        datesService.save(date);
         
 		
 	}

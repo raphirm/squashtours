@@ -28,6 +28,7 @@ import squash.service.RankingService;
 import squash.service.SatzService;
 import squash.service.SpielService;
 import squash.service.UserService;
+import squash.util.DateStatus;
 import squash.util.JSONTools;
 public class SpielDTO {
 	
@@ -41,6 +42,11 @@ public class SpielDTO {
 		}
 		if(obj.has("date")){
 			match.setDate((List<Dates>) datesService.findAll(JSONTools.getJSONArray(obj.getJSONArray("date"))));
+			for (Dates date : match.getDate()) {
+				date.setStatus(DateStatus.PROPOSED);
+				date.setSpiel(match);
+				
+			}
 		}
 		if(obj.has("sets")){
 			match.setSets((List<Satz>) satzService.findAll(JSONTools.getJSONArray(obj.getJSONArray("sets"))));
@@ -70,6 +76,11 @@ public class SpielDTO {
 				dateList.add(date.getId());
 			}
 			match.setDate((List<Dates>) datesService.findAll(dateList));
+			for (Dates date : match.getDate()) {
+				date.setStatus(DateStatus.PROPOSED);
+				date.setSpiel(match);
+				
+			}
 		}
 		if(match.getSets()!=null){
 			List<Long> setList = new ArrayList<Long>();
