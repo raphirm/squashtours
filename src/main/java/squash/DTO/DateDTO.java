@@ -1,11 +1,8 @@
 package squash.DTO;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.annotation.Resource;
-import javax.transaction.Transactional;
 
 import squash.model.Address;
 import squash.model.Dates;
@@ -28,7 +25,7 @@ public class DateDTO {
 		
 		date = datesService.findOne(date.getId());
 		if(obj.has("date")){
-			DateFormat df = new SimpleDateFormat();
+            SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
 			date.setDate(df.parse(obj.getString("date")) );
 		}
 		if(obj.has("origin")){
