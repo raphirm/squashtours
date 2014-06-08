@@ -98,16 +98,16 @@ public class Ranking implements JSONObj{
 	public JSONObject getJSONObj() throws JSONException {
 		JSONObject obj = getJSONObjSave();
 		if(leage!=null){
-			obj.put("League", leage.getJSONObj());
+			obj.put("league", leage.getJSONObj());
 			
 		}else{
-			obj.put("League","");
+			obj.put("league","");
 		}
 		if(user!=null){
-			obj.put("User", user.getJSONObj());
+			obj.put("user", user.getJSONObj());
 			
 		}else{
-			obj.put("User","");
+			obj.put("user","");
 		}
 		return obj;
 	}
@@ -120,7 +120,13 @@ public class Ranking implements JSONObj{
 		obj.put("draws", draws);
 		obj.put("points", points);
 		obj.put("rank", rank);
-		
+		if(user!=null){
+		obj.put("user", user.getUsername());
+		}
+		if(leage!=null){
+			obj.put("league", leage.getId());
+
+		}
 		return obj;
 	}
 	

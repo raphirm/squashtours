@@ -32,11 +32,16 @@ public class Spiel implements JSONObj{
 	@GeneratedValue
 	private long id;
 	
+	@Column
+	private boolean closed;
+	
 	@ManyToOne
 	private User player1;
 	
 	@ManyToOne
 	private User player2;
+	@ManyToOne
+	private League league;
 	
 	
 	@OneToMany(fetch=FetchType.EAGER)
@@ -57,6 +62,20 @@ public class Spiel implements JSONObj{
 	public List<Satz> getSets() {
 		return sets;
 	}
+	
+	
+
+	public League getLeague() {
+		return league;
+	}
+
+
+
+	public void setLeague(League league) {
+		this.league = league;
+	}
+
+
 
 	public void setSets(List<Satz> sets) {
 		this.sets = sets;
@@ -111,6 +130,16 @@ public class Spiel implements JSONObj{
 	public void setPlayer2Status(MatchStatus player2Status) {
 		this.player2Status = player2Status;
 	}
+	
+	
+
+	public boolean isClosed() {
+		return closed;
+	}
+
+	public void setClosed(boolean closed) {
+		this.closed = closed;
+	}
 
 	@Override
 	public String getJSON() throws JSONException {
@@ -123,6 +152,7 @@ public class Spiel implements JSONObj{
 		if(date!=null){
 			obj.put("date", JSONTools.getJSONArray(date));
 		}
+		
 		else{
 			obj.put("date", "");
 		}
@@ -142,6 +172,12 @@ public class Spiel implements JSONObj{
 		}else{
 			obj.put("player2", "");
 		}
+		if(league!=null){
+			obj.put("league", league.getJSONObj());
+		}else{
+			obj.put("league", "");
+		}
+		
 		return obj;
 	}
 
@@ -149,7 +185,7 @@ public class Spiel implements JSONObj{
 	public JSONObject getJSONObjSave() throws JSONException {
 		JSONObject obj = new JSONObject();
 		obj.put("id", id);
-		
+		obj.put("closed", closed);
 		if(player1Status!=null){
 			obj.put("player1Status", player1Status.toString());
 		}else{

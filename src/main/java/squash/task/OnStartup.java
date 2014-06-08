@@ -18,17 +18,21 @@ import squash.model.Address;
 import squash.model.Court;
 import squash.model.Dates;
 import squash.model.Group;
+import squash.model.League;
 import squash.model.Satz;
 import squash.model.Spiel;
 import squash.model.User;
 import squash.service.AddressService;
 import squash.service.CourtService;
 import squash.service.DatesService;
+import squash.service.LeagueService;
+import squash.service.RankingService;
 import squash.service.SatzService;
 import squash.service.SpielService;
 import squash.service.UserService;
 import squash.util.DateStatus;
 import squash.util.MatchStatus;
+import squash.util.RankingManager;
 
 @Component
 public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
@@ -38,6 +42,11 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
 	@Resource
 	private CourtService courtService;
 	
+	@Resource
+	private LeagueService leagueService;
+	
+	@Resource
+	private RankingService rankingService;
 	@Resource
 	private UserService userservice;
 	@Resource
@@ -100,6 +109,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
         
         
         Spiel match = new Spiel();
+        
         match.setPlayer1(user);
         match.setPlayer2(user1);
         List<Dates> dates = new ArrayList<Dates>();
@@ -122,6 +132,26 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
         spielService.save(match);
         date.setSpiel(match);
         datesService.save(date);
+        
+        League league = new League();
+        league.setTitle("AwesomeLeage 1");
+        league.setDescription("Diese Liga ist nur für wirklich coole Leute");
+        List<User> users = new ArrayList<User>();
+        users.add(user);
+        users.add(user1);
+        
+
+        league.setUser(users);
+        leagueService.save(league);
+        League league2 = new League();
+        league2.setTitle("AwesomeLeage 12");
+        league2.setDescription("Diese Liga ist nur für wirklich coole Leute");
+        leagueService.save(league2);
+        
+        RankingManager.createRanking(user, league, userservice, leagueService, rankingService);
+        RankingManager.createRanking(user1, league, userservice, leagueService, rankingService);
+        match.setLeague(league);
+        spielService.save(match);
         
 		
 	}

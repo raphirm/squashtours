@@ -44,7 +44,6 @@ public class User implements UserDetails, JSONObj {
 	@NotEmpty(message="Username should not be empty.")
 	@Column(unique = true, nullable = false)
 	private String username;
-	@NotEmpty(message="Password should not be empty.")
 	@Column
 	private String password;
 	@Column

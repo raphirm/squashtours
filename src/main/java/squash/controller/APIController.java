@@ -1,5 +1,8 @@
 package squash.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -46,6 +49,7 @@ import squash.service.SatzService;
 import squash.service.SpielService;
 import squash.service.UserService;
 import squash.util.JSONTools;
+import squash.util.RankingManager;
 @Controller
 public class APIController {
 	@Resource
@@ -300,7 +304,7 @@ public class APIController {
 			SpielDTO spielDTO = new SpielDTO();
 			if(spiel!=null){
 				found=true;
-				spielDTO.update(obj, spiel, spielService, userService, datesService, satzService );
+				spielDTO.update(obj, spiel, spielService, userService, datesService, satzService , rankingService);
 				return JSONTools.generateSuccessReply(spiel.getId());
 			}
 			break;
@@ -453,7 +457,7 @@ public class APIController {
 			}
 			else{
 				SpielDTO spielDTO = new SpielDTO();
-				spielDTO.create(spiel, spielService, userService, datesService, satzService);
+				spielDTO.create(spiel, spielService, userService, datesService, satzService, leagueService);
 				return JSONTools.generateSuccessReply(spiel.getId());
 			}
 		
@@ -476,6 +480,48 @@ public class APIController {
 			}
 			
 		}
-		
+		@RequestMapping(value="/api/_login", produces="application/json")
+		public @ResponseBody String login() throws Exception{
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			User user;
+			if (principal instanceof User) {
+			   user  = ((User)principal);
+			} else {
+			  user = new User();
+			  user.setId(new Long(0));
+			}
+			return JSONTools.generateSuccessReply(user.getId());
+			
+		}
+		@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/spiel/{id}/addSet", produces="application/json", consumes="application/json")
+		public @ResponseBody String addSet( @RequestBody String obj, @PathVariable("id") long id,  BindingResult result) throws Exception{
+			JSONObject json = new JSONObject(obj);
+			Spiel spiel = spielService.findOne(id);
+			Satz satz = satzService.findOne(json.getLong("id"));
+			List<Satz> sets = spiel.getSets();
+			sets.add(satz);
+			spielService.save(spiel);
+			return JSONTools.generateSuccessReply(spiel.getId());
+			
+			
+			
+		}
+		@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/league/join", produces="application/json", consumes="application/json")
+		public @ResponseBody String register(  @Valid  @RequestBody String json) throws Exception{
+			JSONObject obj = new JSONObject(json);
+			User user = userService.findOne(obj.getLong("uid"));
+			League league = leagueService.findOne(obj.getLong("lid"));
+			if(league.getUser()!=null){
+				league.getUser().add(user);
+			}else{
+				List<User> users = new ArrayList<User>();
+				users.add(user);
+				league.setUser(users);
+			}
+			RankingManager.createRanking(user, league, userService, leagueService, rankingService);
+			leagueService.save(league);
+			
+			return JSONTools.generateSuccessReply();
+		}
 
 }

@@ -30,10 +30,11 @@ import squash.service.SpielService;
 import squash.service.UserService;
 import squash.util.DateStatus;
 import squash.util.JSONTools;
+import squash.util.RankingManager;
 public class SpielDTO {
 	
 	
-	public void update(JSONObject obj, Spiel match, SpielService spielService, UserService userService, DatesService datesService, SatzService satzService) throws JSONException {
+	public void update(JSONObject obj, Spiel match, SpielService spielService, UserService userService, DatesService datesService, SatzService satzService, RankingService rankingService) throws JSONException {
 		if(obj.has("player1")){
 			match.setPlayer1(userService.findOne(obj.getJSONObject(("player1")).getLong("id")));
 		}
@@ -51,13 +52,20 @@ public class SpielDTO {
 		if(obj.has("sets")){
 			match.setSets((List<Satz>) satzService.findAll(JSONTools.getJSONArray(obj.getJSONArray("sets"))));
 		}
+		if(obj.has("closed")){
+			match.setClosed(obj.getBoolean("closed"));
+			if(obj.getBoolean("closed")){
+				RankingManager.addMatchToRanking(match, rankingService);
+			}
+		}
 		
 		
 		spielService.save(match);
 		
 	}
 	
-	public void create(Spiel match, SpielService spielService, UserService userService, DatesService datesService, SatzService satzService){
+	public void create(Spiel match, SpielService spielService, UserService userService, DatesService datesService, SatzService satzService, LeagueService leagueService){
+		League league = new League();
 		if(match.getPlayer1().getId()!=null){
 			match.setPlayer1(userService.findOne(match.getPlayer1().getId()));
 		}
@@ -66,6 +74,19 @@ public class SpielDTO {
 		}
 		if(match.getPlayer2().getId()!=null){
 			match.setPlayer2(userService.findOne(match.getPlayer2().getId()));
+		}
+		if(match.getLeague()!=null){
+			league = leagueService.findOne(match.getLeague().getId());
+			match.setLeague(league);
+			if(league.getSpiel()!=null){
+				league.getSpiel().add(match);
+			}else{
+				List<Spiel> spiele = new ArrayList<Spiel>();
+				spiele.add(match);
+				league.setSpiel(spiele);
+				
+			}
+			
 		}
 		if(match.getPlayer2().getUsername()!=null){
 			match.setPlayer2(userService.findByUsername(match.getPlayer2().getUsername()));
@@ -92,6 +113,10 @@ public class SpielDTO {
 	
 		
 		spielService.save(match);
+		if(match.getLeague()!=null){
+			leagueService.save(league);
+
+		}
 	}
 	
 }
