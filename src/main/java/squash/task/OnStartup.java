@@ -60,6 +60,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
+		if(!(userservice.findByEMail("admin@admin.com").isEnabled())){
     	Address address = new Address();
     	address.setStreet1("Brandstrasse 49");
     	address.setStreet2("49.2.2");
@@ -152,7 +153,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
         RankingManager.createRanking(user1, league, userservice, leagueService, rankingService);
         match.setLeague(league);
         spielService.save(match);
-        
+		}
 		
 	}
 	

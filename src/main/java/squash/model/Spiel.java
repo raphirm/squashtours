@@ -43,11 +43,12 @@ public class Spiel implements JSONObj{
 	@ManyToOne
 	private League league;
 	
-	
+	@Column
 	@OneToMany(fetch=FetchType.EAGER)
 	private List<Dates> date;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@Column
+	@OneToMany( fetch=FetchType.EAGER)
 	private List<Satz> sets;
 	
 	
@@ -156,7 +157,7 @@ public class Spiel implements JSONObj{
 		else{
 			obj.put("date", "");
 		}
-		if(sets!=null){
+ 		if(sets!=null){
 			obj.put("sets", JSONTools.getJSONArray(sets));
 		}
 		else{

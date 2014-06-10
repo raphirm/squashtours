@@ -1,6 +1,7 @@
 package squash.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -139,7 +140,14 @@ public class APIController {
 			obj = satzService.findOne(id);
 			break;
 		case "spiel":
-			obj = spielService.findOne(id);
+			Iterable<Spiel> spielarr = spielService.findAll();
+			obj = new Spiel();
+			for (Spiel spl : spielarr) {
+				if(spl.getId()==id){
+					obj = spl;
+					break;
+				}
+			}
 			break;
 		default:
 			break;
@@ -496,7 +504,14 @@ public class APIController {
 		@RequestMapping(method={RequestMethod.POST, RequestMethod.PUT}, value="/api/spiel/{id}/addSet", produces="application/json", consumes="application/json")
 		public @ResponseBody String addSet( @RequestBody String obj, @PathVariable("id") long id,  BindingResult result) throws Exception{
 			JSONObject json = new JSONObject(obj);
-			Spiel spiel = spielService.findOne(id);
+			Iterable<Spiel> spielarr = spielService.findAll();
+			Spiel spiel = new Spiel();
+			for (Spiel spl : spielarr) {
+				if(spl.getId()==id){
+					spiel = spl;
+					break;
+				}
+			}
 			Satz satz = satzService.findOne(json.getLong("id"));
 			List<Satz> sets = spiel.getSets();
 			sets.add(satz);

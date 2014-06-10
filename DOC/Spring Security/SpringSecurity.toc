@@ -50,6 +50,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Implementation}{11}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Environment}{11}{section.3.1}
+\contentsline {section}{\numberline {3.1}Planung}{11}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Details zur Implementation}{11}{section.3.2}
+\contentsline {section}{\numberline {3.2}Environment}{11}{section.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Features}{11}{section.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Details zur Implementation}{12}{section.3.4}

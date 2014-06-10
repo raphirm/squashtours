@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.13)  13 MAY 2014 16:25
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.13)  10 JUN 2014 08:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,7 +658,26 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count285
 \@quotereset=\count286
-(./SquashManager.aux)
+(./SquashManager.aux
+
+LaTeX Warning: Label `fig:coreconcept' multiply defined.
+
+
+LaTeX Warning: Label `fig:coreconcept' multiply defined.
+
+
+LaTeX Warning: Label `fig:coreconcept' multiply defined.
+
+
+LaTeX Warning: Label `fig:coreconcept' multiply defined.
+
+
+LaTeX Warning: Label `fig:coreconcept' multiply defined.
+
+
+LaTeX Warning: Label `fig:coreconcept' multiply defined.
+
+)
 \openout1 = `SquashManager.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
@@ -688,11 +707,11 @@ Package biblatex Info: Automatic encoding selection.
 \openout3 = `SquashManager.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'SquashManager.bbl' not found.
-
-No file SquashManager.bbl.
+Package biblatex Info: ... file 'SquashManager.bbl' found.
+ (./SquashManager.bbl)
 Package biblatex Info: Reference section=0 on input line 86.
 Package biblatex Info: Reference segment=0 on input line 86.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count287
@@ -743,7 +762,7 @@ LaTeX Info: Redefining \nameref on input line 86.
 \openout4 = `SquashManager.out'.
 
 
-<Graphics/title.jpg, id=36, 452.69125pt x 446.66875pt>
+<Graphics/title.jpg, id=92, 452.69125pt x 446.66875pt>
 File: Graphics/title.jpg Graphic file (type jpg)
 
 <use Graphics/title.jpg>
@@ -776,7 +795,7 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Graphics/title.jpg>]
-<Graphics/zhaw.jpg, id=45, 501.875pt x 501.875pt>
+<Graphics/zhaw.jpg, id=101, 501.875pt x 501.875pt>
 File: Graphics/zhaw.jpg Graphic file (type jpg)
  <use Graphics/zhaw.jpg>
 Package pdftex.def Info: Graphics/zhaw.jpg used on input line 91.
@@ -844,17 +863,17 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 10.
+(babel)             in language  on input line 11.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 10.
+(babel)             in language  on input line 11.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 13.
+(babel)             in language  on input line 14.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 13.
+(babel)             in language  on input line 14.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 16.
+(babel)             in language  on input line 21.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 16.
+(babel)             in language  on input line 21.
 ) (./Library/2-Def.tex
 File: Graphics/zhaw.jpg Graphic file (type jpg)
  <use Graphics/zhaw.jpg>
@@ -880,34 +899,260 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
-) (./Library/3-Over.tex
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 2.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 2.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 3.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 3.
+<Graphics/UC1.png, id=143, 923.45pt x 461.725pt>
+File: Graphics/UC1.png Graphic file (type png)
+ <use Graphics/UC1.png>
+Package pdftex.def Info: Graphics/UC1.png used on input line 6.
+(pdftex.def)             Requested size: 375.80542pt x 187.8994pt.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 14.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 14.
+
+<Graphics/UC2.png, id=145, 1731.46875pt x 581.17125pt>
+File: Graphics/UC2.png Graphic file (type png)
+ <use Graphics/UC2.png>
+Package pdftex.def Info: Graphics/UC2.png used on input line 17.
+(pdftex.def)             Requested size: 375.80542pt x 126.13768pt.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 24.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 24.
+
+<Graphics/UC3.png, id=146, 1204.5pt x 1468.48625pt>
+File: Graphics/UC3.png Graphic file (type png)
+ <use Graphics/UC3.png>
+Package pdftex.def Info: Graphics/UC3.png used on input line 27.
+(pdftex.def)             Requested size: 375.80542pt x 458.16139pt.
 File: Graphics/zhaw.jpg Graphic file (type jpg)
- <use Graphics/zhaw.jpg>
-Package pdftex.def Info: Graphics/zhaw.jpg used on input line 1.
+
+<use Graphics/zhaw.jpg>
+Package pdftex.def Info: Graphics/zhaw.jpg used on input line 31.
 (pdftex.def)             Requested size: 25.0pt x 24.99565pt.
 
 Overfull \vbox (11.65572pt too high) has occurred while \output is active []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 31.
 
 [5
 
-]
-Kapitel 3.
+ <./Graphics/UC1.png> <./Graphics/UC2.png>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 35.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 1.
-) (./Library/4-Detail.tex
+(babel)             in language  on input line 35.
 File: Graphics/zhaw.jpg Graphic file (type jpg)
  <use Graphics/zhaw.jpg>
+Package pdftex.def Info: Graphics/zhaw.jpg used on input line 40.
+(pdftex.def)             Requested size: 25.0pt x 24.99565pt.
+
+Overfull \vbox (11.65572pt too high) has occurred while \output is active []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 40.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 40.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 40.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 40.
+
+[6 <./Graphics/UC3.png>]
+File: Graphics/zhaw.jpg Graphic file (type jpg)
+ <use Graphics/zhaw.jpg>
+Package pdftex.def Info: Graphics/zhaw.jpg used on input line 45.
+(pdftex.def)             Requested size: 25.0pt x 24.99565pt.
+
+Overfull \vbox (11.65572pt too high) has occurred while \output is active []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 45.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 45.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 45.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 45.
+
+[7]
+Kapitel 3.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 45.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 45.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 46.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 46.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 49.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 54.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 54.
+
+<Graphics/serverclientcommunication.jpg, id=173, 1127.21124pt x 796.9775pt>
+File: Graphics/serverclientcommunication.jpg Graphic file (type jpg)
+
+<use Graphics/serverclientcommunication.jpg>
+Package pdftex.def Info: Graphics/serverclientcommunication.jpg used on input l
+ine 58.
+(pdftex.def)             Requested size: 375.80542pt x 265.7031pt.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 64.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 64.
+
+<Graphics/ERD.png, id=174, 1318.9275pt x 1093.08376pt>
+File: Graphics/ERD.png Graphic file (type png)
+ <use Graphics/ERD.png>
+Package pdftex.def Info: Graphics/ERD.png used on input line 68.
+(pdftex.def)             Requested size: 375.80542pt x 311.44872pt.
+File: Graphics/zhaw.jpg Graphic file (type jpg)
+
+<use Graphics/zhaw.jpg>
+Package pdftex.def Info: Graphics/zhaw.jpg used on input line 73.
+(pdftex.def)             Requested size: 25.0pt x 24.99565pt.
+
+Overfull \vbox (11.65572pt too high) has occurred while \output is active []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 73.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 73.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 73.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 73.
+
+[8
+
+ <./Graphics/serverclientcommunication.jpg>]
+File: Graphics/zhaw.jpg Graphic file (type jpg)
+ <use Graphics/zhaw.jpg>
+Package pdftex.def Info: Graphics/zhaw.jpg used on input line 86.
+(pdftex.def)             Requested size: 25.0pt x 24.99565pt.
+
+Overfull \vbox (11.65572pt too high) has occurred while \output is active []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 86.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 86.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 86.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 86.
+
+[9 <./Graphics/ERD.png>]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 89.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 89.
+
+<Graphics/APIArchitecture.png, id=189, 682.55pt x 883.3pt>
+File: Graphics/APIArchitecture.png Graphic file (type png)
+
+<use Graphics/APIArchitecture.png>
+Package pdftex.def Info: Graphics/APIArchitecture.png used on input line 112.
+(pdftex.def)             Requested size: 375.80542pt x 486.34215pt.
+
+Underfull \vbox (badness 5832) has occurred while \output is active []
+
+File: Graphics/zhaw.jpg Graphic file (type jpg)
+
+<use Graphics/zhaw.jpg>
+Package pdftex.def Info: Graphics/zhaw.jpg used on input line 117.
+(pdftex.def)             Requested size: 25.0pt x 24.99565pt.
+
+Overfull \vbox (11.65572pt too high) has occurred while \output is active []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 117.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 117.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 117.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 117.
+
+[10]
+File: Graphics/zhaw.jpg Graphic file (type jpg)
+ <use Graphics/zhaw.jpg>
+Package pdftex.def Info: Graphics/zhaw.jpg used on input line 120.
+(pdftex.def)             Requested size: 25.0pt x 24.99565pt.
+
+Overfull \vbox (11.65572pt too high) has occurred while \output is active []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 120.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 120.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 120.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 120.
+
+[11 <./Graphics/APIArchitecture.png>]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 121.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 121.
+
+<Graphics/APPArchitecture.png, id=202, 2356.805pt x 1901.1025pt>
+File: Graphics/APPArchitecture.png Graphic file (type png)
+
+<use Graphics/APPArchitecture.png>
+Package pdftex.def Info: Graphics/APPArchitecture.png used on input line 126.
+(pdftex.def)             Requested size: 375.80542pt x 303.1383pt.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 140.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 140.
+File: Graphics/zhaw.jpg Graphic file (type jpg)
+ <use Graphics/zhaw.jpg>
+Package pdftex.def Info: Graphics/zhaw.jpg used on input line 142.
+(pdftex.def)             Requested size: 25.0pt x 24.99565pt.
+
+Overfull \vbox (11.65572pt too high) has occurred while \output is active []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 142.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 142.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 142.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 142.
+
+[12 <./Graphics/APPArchitecture.png>]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 145.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 145.
+) (./Library/3-Over.tex
+File: Graphics/zhaw.jpg Graphic file (type jpg)
+
+<use Graphics/zhaw.jpg>
 Package pdftex.def Info: Graphics/zhaw.jpg used on input line 1.
 (pdftex.def)             Requested size: 25.0pt x 24.99565pt.
 
@@ -922,14 +1167,20 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
 
-[6
-
-]
+[13]
 Kapitel 4.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 2.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 2.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 7.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 7.
 )
 File: Graphics/zhaw.jpg Graphic file (type jpg)
  <use Graphics/zhaw.jpg>
@@ -947,7 +1198,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 112.
 
-[7
+[14
 
 ] (./SquashManager.lof)
 \tf@lof=\write6
@@ -975,7 +1226,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 116.
 
-[8
+[15
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
@@ -988,13 +1239,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 116.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 116.
 Package rerunfilecheck Info: File `SquashManager.out' has not changed.
-(rerunfilecheck)             Checksum: 85B0F9998EEEF03C9DD8B56796D99057;441.
+(rerunfilecheck)             Checksum: 4539020107E4E676D4CCC6F76D0477E6;1368.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
 
 Package biblatex Warning: Please (re)run Biber on the file:
@@ -1006,22 +1260,23 @@ Package logreq Info: Writing requests to 'SquashManager.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 14890 strings out of 493304
- 235727 string characters out of 6139871
- 713542 words of memory out of 5000000
- 18085 multiletter control sequences out of 15000+600000
+ 14999 strings out of 493304
+ 237550 string characters out of 6139871
+ 716637 words of memory out of 5000000
+ 18153 multiletter control sequences out of 15000+600000
  13377 words of font info for 50 fonts, out of 8000000 for 9000
  961 hyphenation exceptions out of 8191
- 56i,14n,55p,840b,1685s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,14n,55p,840b,1750s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on SquashManager.pdf (8 pages, 206845 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on SquashManager.pdf (15 pages, 537243 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
- 75 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 269 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 222 words of extra memory for PDF output out of 10000 (max. 10000000)
 

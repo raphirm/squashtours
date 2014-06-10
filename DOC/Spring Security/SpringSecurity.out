@@ -11,5 +11,7 @@
 \BOOKMARK [2][-]{subsection.2.3.2}{Authentication}{section.2.3}% 11
 \BOOKMARK [2][-]{subsection.2.3.3}{Autorisation}{section.2.3}% 12
 \BOOKMARK [0][-]{chapter.3}{Implementation}{}% 13
-\BOOKMARK [1][-]{section.3.1}{Environment}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.2}{Details zur Implementation}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.1}{Planung}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{Environment}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.3}{Features}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.4}{Details zur Implementation}{chapter.3}% 17

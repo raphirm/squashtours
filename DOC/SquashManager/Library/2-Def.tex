@@ -1,1 +1,153 @@
-\chapter{Konzept}
+\chapter{Planung und Features}
+\section{Features}
+\subsection{Verabredung für ein Spiel}
+\begin{figure}[h]{}
+	\vspace{-0.8cm}
+	\includegraphics[width=0.8\textwidth]{Graphics/UC1.png}
+	\caption{Grafische Darstellung wie sich User verabreden}
+	\label{fig:coreconcept}
+	\vspace{-0.7cm}
+\end{figure}
+Der erste Use Case zeigt wie ein User eine Herausforderung an einen anderen User senden kann. Der Empfänger der Herausforderung kann anschliessend zwischen mehreren vorgeschlagenen Daten wählen und die Herausforderung annehmen. 
+
+
+\subsection{Erstellen und Beitreten einer Liga}
+\begin{figure}[h]{}
+	\vspace{-0.8cm}
+	\includegraphics[width=0.8\textwidth]{Graphics/UC2.png}
+	\caption{Liga erstellen und beitreten}
+	\label{fig:coreconcept}
+	\vspace{-0.7cm}
+\end{figure}
+Ein User kann selber eine Liga erstellen. Die Liga beinhaltet ein Ranking über alle User, welche daran teilnehmen. User können der Liga beitreten um in das Ranking aufgenommen zu werden und Spiele gegen andere User der gleichen Liga zu spielen.
+
+\subsection{Spielen eines Matches}
+\begin{figure}[h]{}
+	\vspace{-0.8cm}
+	\includegraphics[width=0.8\textwidth]{Graphics/UC3.png}
+	\caption{Spielen und Abschliessen eines Spiels}
+	\label{fig:coreconcept}
+	\vspace{-0.7cm}
+\end{figure}
+Sobald die User das Spiel vereinbart haben, können sie das Spiel spielen, und ihre Resultate in der App festhalten. Sobald die User fertig sind mit spielen können sie das Spiel abschliessen. Nach Abschluss kann das Resultat nicht verändert werden und das Resultat wird im Ranking den einzelnen Spielern zugeschrieben.
+
+
+\section{Planung}
+Folgendermassen will ich vorgehen:
+\begin{enumerate}
+\item Erstellen einer Datenbank, in welche die Daten gespeichert werden
+\item Erstellen einer REST-API, welche die Daten der APP zur Verfügung stellt
+\item Erstellen einer App, welche der Benutzer bedienen kann.
+\end{enumerate}
+
+In der Implementation findet man Details zu den einzelnen Punkten und wie ich die Problemstellungen gelöst und implementiert habe.
+
+\chapter{Implementation}
+\section{Technologien}
+Folgende Technologien wurden verwendet:
+\begin{itemize}
+\item Spring und Hibernate/JPA um eine Rest-API zu erstellen
+\item Android Studio um die Android App zu erstellen
+\end{itemize}
+
+
+\section{Kommunikation zwischen Server und Client}
+Die Androd App kommuniziert live mit der REST API. Sie hat keinen eigenen Cache oder eigene Daten. 
+\begin{figure}[h]{}
+	\vspace{-0.8cm}
+	\includegraphics[width=0.8\textwidth]{Graphics/serverclientcommunication.jpg}
+	\caption{Übersicht wie Daten fliessen }
+	\label{fig:coreconcept}
+	\vspace{-0.7cm}
+\end{figure}
+
+\section{DB}
+Da ich am Anfang des Projektes einen etwas grösseren Scope hatte, beinhaltet die Datenbank Daten, welche von der App nicht verwendet werden. Diese sind Rot im folgenden Diagramm markiert:
+\begin{figure}[h]{}
+	\vspace{-0.8cm}
+	\includegraphics[width=0.8\textwidth]{Graphics/ERD.png}
+	\caption{ERD Datenbank Squash }
+	\label{fig:coreconcept}
+	\vspace{-0.7cm}
+\end{figure}
+
+Wie man im oberen Layout sieht gibt es 3 zentrale Ressorucen:
+\begin{itemize}
+\item User: Verwaltet Benutzer, welche Squash spielen wollen, dient auch zur Authentisierung und Autorisierung der Benutzer
+\item Spiel: Jedes Spiel wird in der Tabelle Spiel festgehalten. Hier ist anzumerken, dass das Spiel eine Referenz zu verschiedenen Daten und verschiedenen Sätzen hat. So kann eine 1:M Relation erfüllt werden. Dies ist Pflicht, wenn man wie bei Doodle mehrere Daten zur Auswahl stellen will.
+\item League: Die Liga beinhaltet Spiele und Rankings. Der Server berechnet nach jedem Spielabschluss welcher Spieler für welche Liga  wie viele Punkte bekommen hat. Darum ist auch ein Spiel immer mit einer Liga referenziert. Jeder Eintrag im Ranking ist genau einer Liga und einem User zugeordnet. So kann auf alle Rankings einer Liga, sowie auf alle Rankings eines Users zugegriffen werden.
+\end{itemize}
+
+Diese Ressourcen bilden der Kern der Applikation und speichern alle relevanten Daten, welche von der Android Appliktaion über eine REST-API gebraucht wird. 
+
+Folgende Ressourcen habe ich bei dem Descoping (siehe Kapitel Reflexion) nicht mehr gebraucht:
+\begin{itemize}
+\item Address: Speichert Addressen von Benutzern und Courts. Diese Daten sind in diesem Stadium der App nicht relevant. Einige Features wären jedoch denkbar, wie z.B. Vorschläge welcher Court am nächsten zum Benutzer ist usw..
+\item Court: Für ein Spiel braucht es eine Zeit, einen Partner und einen Ort. Da dies normalerweise Relativ klar ist, hatte diese Variable jedoch tiefe Priorität und wurde desoped (siehe Kapitel Reflexion).
+\end{itemize}
+
+\section{API}
+Als API habe ich die Datenbank über REST/JSON zu Verfügung gestellt. Dies hat den Vorteil das ich mehr Logik in die App einbauen konnte. Im Verlauf des Projektes stellte es sich jedoch als Hinderniss heraus, da Fehler und Inkonsistenzen auftreten können, wenn man der grossteil der Logik im Client anstatt im Server implementiert.
+
+Folgende Syntax habe ich für die API verwendet:
+<host>/api/<ressource>[/id]
+
+Mit GET request auf die Ressource empfängt man ein JSON Array aus allen verfügbaren Ressourcen auf dem Server.
+
+Vorteile: 
+\begin{itemize}
+\item Der Client kann visualisieren was nötig ist.
+\item Der Client hat den ganzen Serverkontext. 
+\end{itemize}
+
+Nachteile:
+\begin{itemize}
+\item Der Client sieht evtl. zu viel, Sicherheitstechnisch nicht OK.
+\item Der Client muss selber Logik einbauen um das richtige Resultat anzuzeigen (was in dieser Arbeit erwünscht ist, da der Fokus auf Android liegen sollte.)
+\end{itemize}
+
+Als Rest API wird das MVC Framework Spring verwendet. Folgendermassen funktioniert die Kommunikation vom Controller, zur Datenbank zurück zur View:
+\begin{figure}[H]{}
+	\vspace{-0.8cm}
+	\includegraphics[width=0.8\textwidth]{Graphics/APIArchitecture.png}
+	\caption{API Architecture}
+	\label{fig:coreconcept}
+	\vspace{-0.7cm}
+\end{figure}
+
+Wenn ein Request (JSON format oder GET) auf die API aufruft, wird sie vom Controller in ein Model-Objekt gespeichert. Die (geänderten) Werte des Model-Objektes werden mit einem Data Transition Objekt in das tatsächliche Datenbank-Model übertragen. Über ein Service Interface (DAO) wird das Model in die Datenbank gespeichert.
+
+\newpage
+\section{Android App}
+Folgendes Bild verdeutlicht die Architektur innerhalb der Android App.
+
+\begin{figure}[H]{}
+	\vspace{-0.8cm}
+	\includegraphics[width=0.8\textwidth]{Graphics/APPArchitecture.png}
+	\caption{Android App Architecture}
+	\label{fig:coreconcept}
+	\vspace{-0.7cm}
+\end{figure}
+
+Der Entrypoint einer Android App ist immer die Mainactivity. Diese Aktivität zeichnet ein NavigationDrawer und eine ListView, über welche man die verschieden Spiele bzw. Ligen sehen kann. Falls in dem Persistance Authentication Objekt einen Username oder Passwort hinterlegt ist, wird direkt zur Login-Activity weitergeleitet, welche eine Eingabemaske für Login oder Registrierung anzeigt. 
+
+Falls eine noch nicht bekannte E-Mail Adresse eingegeben wurde, versucht die APP, die neue e-Mail Adresse direkt zu registrieren. Falls die Registrierung erfolgreich durchgeführt werden kann, wird  auf das Profil weitergeleitet um mögliche Änderungen vorzunehmen (z.B. wechseln des Benutzernamens). Das Profil ist auch über die MainActivity immer erreichbar. 
+
+Von der Main Activity können nun alle Operationen durchgeführt werden. Der Übersicht halber wird in diesem Dokument von zwei Teilen der Applikation gesprochen. Das Liga- und das Spielmanagement.
+
+Nahezu alle Aktivitäten benutzen Utilities. Diese Utilities sind meisst statische Methoden, welche typische und häufig wiederholte Funktionen zusammenfasst. Als Beispiel ist hier das REST Interface, welches HTTP Gets und Post ausführt bei Entgegennahme der URL und der zu sendenden Daten. Gleiches gibt es für JSON Operationen, welche nicht von der Standard JSON.org API abgedeckt sind. 
+
+\subsection{Liga Management}
+Das Liga-Management ist nicht sehr komplex. In der ListView sieht man die Übersicht aller Ligen. Je nachdem ob der Spieler einer Liga beigetreten ist oder nicht, bestimmt was die Detailansicht ist. Wenn der Spieler der Liga noch nicht beigetreten ist und auf diese Klickt, erscheint eine Anfrage ob er der Liga beitreten will oder nicht. Sobald er beigetreten ist, sieht er die Details der Liga und das Ranking der einzelnen Spieler.
+
+Als nächste Funktion kann man eine neue Liga hinzufügen. Hier gibt es eine simple Eingabe Maske.
+
+\subsection{Spiel Management}
+Das Spiel Management ist erheblich komplexer, da verschiedene Daten vorgeschlagen werden können, welche der Gegner anschliessend auswählen kann. Auch hier wird eine ListView mit der Übersicht der einzelnen Matches geladen. Falls der Spieler auf die Antwort des Gegners wartet, das Spiel schon vereinbart ist oder das Spiel aktuell stattfindet, so wird der Spieler auf die Detail Ansicht des Spieles weitergeleitet.  Falls der Spieler von einem Gegner herausgefordert wurde, so bekommt er eine Auswahl von Daten und er kann auswählen wann das Spiel stattfindet. 
+
+Sobald das Spiel vereinbart wurde ist es möglich Sätze hinzuzufügen. Sobald ein Satz hinzugefügt wurde, wird davon ausgegangen, dass das Spiel läuft. Man kann so lange Sätze eintragen, bis man das Spiel beendet. Mit der Beendigung des Spieles wird das Spiel gewertet und der Gewinner bekommt punkte in das Ranking.
+
+Um ein neues Spiel zu erstellen erscheint eine Eingabemaske, bei dem man Gegner, Liga und Daten auswählen kann. Zusätzlich kann man neue Daten erstellen (welches eine neue View öffnet).
+
+
+
