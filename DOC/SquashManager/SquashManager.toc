@@ -45,3 +45,5 @@
 \contentsline {section}{\numberline {4.1}Planung und Tests}{14}{section.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Funktionalit\"at}{14}{section.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Hibernate-Bug und Workaround}{14}{section.4.3}
