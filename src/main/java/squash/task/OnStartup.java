@@ -60,7 +60,7 @@ public class OnStartup implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
-		if(!(userservice.findByEMail("admin@admin.com")!=null)){
+		if(!(userservice.findByEMail("admin@admin.com")==null)){
 		if(!(userservice.findByEMail("admin@admin.com").isEnabled())){
     	Address address = new Address();
     	address.setStreet1("Brandstrasse 49");
